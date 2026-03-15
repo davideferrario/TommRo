@@ -1,0 +1,292 @@
+Version 1.3.11 [20xx/xx/xx]
+---------------------------
+*
+
++ libs
+------
+    * mbedtls: REL 2.28.10 (2025/03/21)
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.10 [2026/02/18]
+---------------------------
+* MDHmac layer added.
+
++ libs
+------
+    * mbedtls: REL 2.28.10 (2025/03/21)
+
++ source
+--------
+    * generic improvements on send/receive timeout.
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.9 [2024/12/02]
+--------------------------
+* SSL support for CA chain certificates not used.
+* SSL support for generic CA chain, client certificate or client private key not used.
+
++ libs
+------
+    * mbedtls: REL 2.28.5 (2023/10/05)
+
++ source
+--------
+    *
+
++ template
+----------
+    * SSL maximum connection amount can be defined in order to reduce SSL used RAM.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.8 [2023/12/09]
+--------------------------
+* improvements on SHA layer.
+* added Client CERT/Client Private Key/Auth Mode for SSL layer.
+
++ libs
+------
+    * mbedtls: REL 2.28.5 (2023-10-05)
+
++ source
+--------
+    *
+
++ template
+----------
+    * to avoid not enough static ram available issue, moved ESP32 memory into malloc.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.7 [2022/09/16]
+--------------------------
+* moved documentation into doc folder.
+* added DES/DES3/MD into crypto layer.
+
++ libs
+------
+    * mbedtls: Rev. 2.28.1
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.6 [2021/09/01]
+--------------------------
+* added debug layer.
+
++ libs
+------
+    * mbedtls: Rev. 2.24.0
+
++ source
+--------
+    * netSocket improvements for Azure.
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.5 [2020/12/17]
+--------------------------
+* added crypto SSL layer.
+* for GNUC compiler, added GNUC Major/Minor/Patch version in Version (in accordance with tommRoC library).
+
++ libs
+------
+    * mbedtls: Rev. 2.24.0
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.4 [2020/07/07]
+--------------------------
+*
+
++ libs
+------
+    * mbedtls: Rev. 2.14.1
+
++ source
+--------
+    *
+
++ template
+----------
+    * little improvement on "drbgEnv" for ARM.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.3 [2019/06/19]
+--------------------------
+* for ARM platform, "Release" build configuration compiler optimization back to -O3 from -Os.
+* added ESP32 platform compile support.
+
++ libs
+------
+    * mbedtls: Rev. 2.14.1
+
++ source
+--------
+    * added disable WDT for long operations (ECDH, RSA).
+
++ template
+----------
+    * added ESP32 environment support.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.2 [2019/03/11]
+--------------------------
+* for ARM platform, "Release" build configuration compiler optimization moved from -O3 to -Os (for size).
+* refactoring of library version (define moved to "tommRoCVersion.h" file).
+
++ libs
+------
+    * mbedtls: Rev. 2.14.1
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
+
+Version 1.3.1 [2019/01/28]
+--------------------------
+* heavy reworked/refactored version.
+
++ libs
+------
+    * mbedtls: Rev. 2.14.1
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
+
+Version 1.2.1 [2018/10/10]
+--------------------------
+* first in-production version.
+
++ libs
+------
+    * mbedtls:  Rev. 2.11.0
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *

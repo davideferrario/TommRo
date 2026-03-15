@@ -1,0 +1,334 @@
+Version 1.3.12 [20xx/xx/xx]
+---------------------------
+*
+
++ libs
+------
+    *
+
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.11 [2028/02/18]
+---------------------------
+* event layer is now stable.
+* semaphore layer is now stable.
+* thread layer added ThreadExit - caller thread destroy - functionality.
+
++ libs
+------
+    *
+
++ source
+--------
+    * improvements on all layers init functions.
+
++ template
+----------
+    * added cmsisRTOS V2 freeRTOS v10.6.2.
+    * improvements on ThreadX Queue check size.
+    * improvements on ThreadX FreeRTOSCellularPort (handled queue of msg size of 1 byte).
+    * improvements on cmsisRTOS V1 Stack Overflow Hook.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.10 [2024/12/02]
+---------------------------
+* improvements on Queue.
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    * FreeRTOSCellularPort added to threadX.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.9 [2023/12/09]
+--------------------------
+* added queue layer.
+* added support for both not recursive and recursive mutex.
+* added thread getID function.
+* added thread name support.
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    * added mwWDT.
+    * added support for thread name in template.
+    * added support for thread name in stack overflow for cmsisRTOS and nxpOSA.
+    * extended support for ThreadX (queue/semaphore).
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.8 [2022/09/16]
+--------------------------
+* moved documentation into doc folder.
+* added empty mwTimer layer.
+* added mwWDT layer.
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    * added CMSIS_V2_RTOS support.
+    * added THREADX support.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.7 [2021/09/01]
+--------------------------
+* added debug layer.
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    * minimal improvements.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.6 [2020/12/17]
+--------------------------
+* thread_main_funct type input type moved from "const void* const" to "void* const" to allow return result from thread (maximum compatibility with different environments).
+* thread_main_funct type output type moved from "void*" to "void" (maximum compatibility with different environments).
+* for GNUC compiler, added GNUC Major/Minor/Patch version in Version (in accordance with tommRoC library).
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.5 [2020/07/07]
+--------------------------
+*
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    * for FreeRTOS, added error message in case of (0 != configSUPPORT_STATIC_ALLOCATION).
+	* "cmsis_os.c" file, cast (TaskFunction_t) instead of (TimerCallbackFunction_t) bug fixed.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.4 [2020/03/18]
+--------------------------
+* added suspend/resume all to Thread layer.
+
++ libs
+------
+    *
+
++ source
+--------
+    * little improvements on Thread layer.
+
++ template
+----------
+    * extended for new suspend/resume all functionality in Thread layer.
+    * improvements on rtos/critical layer for cmsisRTOS/nxpOSA environment.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.3 [2019/06/19]
+--------------------------
+* for ARM platform, "Release" build configuration compiler optimization back to -O3 from -Os.
+* added ESP32 platform compile support.
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    * added ESP32 environment support (under "cmsisRTOS").
+    * rework of "cmsisRTOS" (now "cmsis_os" files are included into tommRoCMw library template).
+    * for "cmsisRTOS", counter overflow bug fixed in case of "__OS_KERNEL_SYS_TICK_FREQ__ > 1000".
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.2 [2019/03/11]
+--------------------------
+* for ARM platform, "Release" build configuration compiler optimization moved from -O3 to -Os (for size).
+* refactoring of library version (define moved to "tommRoCVersion.h" file).
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
+
+Version 1.3.1 [2019/01/28]
+--------------------------
+* heavy reworked/refactored version.
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    * added NXP OSA RTOS and added UpTime increment for compatibility with TommRoC sleep (low power) layer.
+
++ test
+------
+    *
+
+
+Version 1.2.1 [2018/10/10]
+--------------------------
+* first in-production version.
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *

@@ -1,0 +1,193 @@
+
+#ifndef TOMMROC_HW_DEVICES_MEMS_MMA845xQ_H_
+#define TOMMROC_HW_DEVICES_MEMS_MMA845xQ_H_
+
+/*
+ *******************************************************************************
+ * License
+ * (C) Copyright 2017
+ *******************************************************************************
+ *
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications according to the supply agreement.
+ *
+ * 1. The origin of this software must not be misrepresented; you must not
+ *    claim that you wrote the original software.
+ * 2. This notice may not be removed or altered from any source distribution.
+ *
+ * DISCLAIMER OF WARRANTY/LIMITATION OF REMEDIES: this software is provided
+ * "AS IS", with no express or implied warranties of any kind, including,
+ * but not limited to, any implied warranties of merchantability or
+ * fitness for any particular purpose or warranties against infringement
+ * of any proprietary rights of a third party.
+ *
+ * Supplier will not be liable for any consequential, incidental, or
+ * special damages, or any other relief, or for any claim by any third party,
+ * arising from your use of this Software.
+ *
+ */
+
+/**
+ * Author
+ * TommRo Software Department
+ */
+
+/*******************************************************************************
+ * includes
+ ******************************************************************************/
+#include "tommRoCHwBus.h"
+#include "tommRoCHwBusDevice.h"
+#include "tommRoCHwErr.h"
+
+#include "DEF/devices/tommRoCHwDEFDevices.h"
+#include "DEF/MEMS/tommRoCHwDEFMEMS.h"
+
+#include "TOMMROC.h"
+
+/*******************************************************************************
+ * defines
+ ******************************************************************************/
+
+// Compatible device I2C addresses.
+#define TOMMROC_HW_DEVICES_MEMS_MMA845xQ_I2C_7_BIT_ADDRESS_SA0_PIN_GND   (0b0011100)
+#define TOMMROC_HW_DEVICES_MEMS_MMA845xQ_I2C_7_BIT_ADDRESS_SA0_PIN_VDD   (0b0011101)
+
+
+// Device data.
+#define TOMMROC_HW_DEVICES_MEMS_MMA845xQ_DEVICE_DATA_SIZE   (   TOMMROC_UTIL_U8_SIZE        +   \
+                                                                TOMMROC_UTIL_FLOAT_SIZE     +   \
+                                                                TOMMROC_UTIL_U16_SIZE       +   \
+                                                                TOMMROC_UTIL_U8_SIZE        +   \
+                                                                TOMMROC_UTIL_U8_SIZE        +   \
+                                                                TOMMROC_UTIL_U8_SIZE        +   \
+                                                                TOMMROC_UTIL_FUNCT_PTR_SIZE +   \
+                                                                TOMMROC_UTIL_FUNCT_PTR_SIZE     )
+
+/*******************************************************************************
+ * typedefs
+ ******************************************************************************/
+
+// Enumeration of tommRoC hardware devices supported MMA845xQ chip hardware type.
+typedef enum {
+
+    TOMMROC_HW_DEVICES_MEMS_MMA845xQ_MMA8451Q_TYPE = 0,
+    TOMMROC_HW_DEVICES_MEMS_MMA845xQ_MMA8452Q_TYPE,
+    TOMMROC_HW_DEVICES_MEMS_MMA845xQ_MMA8453Q_TYPE,
+
+    TOMMROC_HW_DEVICES_MEMS_MMA845xQ_HARDWARE_ERROR,
+
+} tommRoC_hw_devices_mems_mma845xq_type_enum_t;
+
+
+// Configuration structure.
+typedef struct {
+
+    tommRoC_hw_devices_def_operating_mode_enum_t    operatingMode;          // Operating mode.
+    tommRoC_hw_def_mems_gravity_full_scale_enum_t   fullScale;              // Full scale.
+    tommRoC_hw_mems_def_interrupt_mode_enum_t       interruptMode;          // Interrupt.
+    tommRoC_util_bit_status_enum_t                  interruptPolarity;      // Interrupt active pin polarity.
+                                                                            // TOMMRO_C_UTIL_HIGH_LEVEL (default)   -> the interrupt pins are active high (low to high on interrupt condition).
+                                                                            // TOMMRO_C_UTIL_LOW_LEVEL              -> the interrupt pins are active low (high to low on interrupt condition).
+
+} tommRoC_hw_devices_mems_mma845xq_config_t;
+
+#define __EMPTY_tommRoC_hw_devices_mems_mma845xq_config_t__                         \
+{                                                                                   \
+    /* .operatingMode */        TOMMRO_C_HW_DEVICES_DEF_OPERATING_MODE_LOW_POWER,   \
+    /* .fullScale */            TOMMRO_C_HW_DEF_MEMS_GRAVITY_FULL_SCALE_2G,         \
+    /* .interruptMode */        TOMMRO_C_HW_DEF_MEMS_INTERRUPT_MODE_DISABLED,       \
+    /* .interruptPolarity */    TOMMRO_C_UTIL_HIGH_LEVEL,                           \
+}
+
+
+// Device data.
+// NOTE: HAVE to be a static variable.
+typedef struct {
+    uint8_t data[TOMMROC_HW_DEVICES_MEMS_MMA845xQ_DEVICE_DATA_SIZE];
+} tommRoC_hw_devices_mems_mma845xq_device_data_t;
+
+/*******************************************************************************
+ * functions
+ ******************************************************************************/
+
+/**
+ * Init bus device as for I2C master bus.
+ * NOTE: chip is not started; function MUST be called.
+ *
+ * param[in]        i2c7BitSlaveAddress     I2C 7 bit slave address.
+ * param[in]        busHandlerPtr           bus pointer.
+ * param[in]        guardPtr                bus device guard (NULL if none).
+ * param[out]       specificSlavePtr        output specific I2C slave pointer [needed as static because linked by bus device].
+ * param[out]       busDevicePtr            output bus device pointer.
+ *
+ * return tommRoC_hw_err_enum_t
+ */
+tommRoC_hw_err_enum_t tommRoCHwDevicesMEMSMMA845xQInitI2C(
+        const   uint8_t                                                 i2c7BitSlaveAddress,
+        const   tommRoC_hw_bus_t*                               const   busHandlerPtr,
+        const   tommRoC_guard_t*                                const   guardPtr,
+                tommRoC_hw_bus_device_specific_i2c_slave_t*     const   specificSlavePtr,
+                tommRoC_hw_bus_device_t*                        const   busDevicePtr);
+
+/**
+ * Attach device data to bus device.
+ * NOTE: chip is not started; function MUST be called.
+ *
+ * param[in]        deviceDataPtr           device data pointer (HAVE to be a static variable).
+ * param[in/out]    busDevicePtr            bus device pointer.
+ *
+ * return tommRoC_hw_err_enum_t
+ */
+tommRoC_hw_err_enum_t tommRoCHwDevicesMEMSMMA845xQAttachDeviceData(
+        const   tommRoC_hw_devices_mems_mma845xq_device_data_t* const   deviceDataPtr,
+                tommRoC_hw_bus_device_t*                        const   busDevicePtr);
+
+/**
+ * Start chip.
+ *
+ * param[in]        configPtr               chip configuration pointer.
+ * param[in]        busDevicePtr            bus device pointer.
+ *
+ * return tommRoC_hw_err_enum_t
+ */
+tommRoC_hw_err_enum_t tommRoCHwDevicesMEMSMMA845xQStart(
+        const   tommRoC_hw_devices_mems_mma845xq_config_t*      const   configPtr,
+        const   tommRoC_hw_bus_device_t*                        const   busDevicePtr);
+
+/**
+ * Get detected MMA845xQ hardware chip type.
+ *
+ * param[in]        busDevicePtr            bus device pointer.
+ * param[out]       MMA845xQTypePtr         detected MMA845xQ hardware chip type pointer.
+ *
+ * return tommRoC_hw_err_enum_t
+ */
+tommRoC_hw_err_enum_t tommRoCHwDevicesMEMSMMA845xQGetType(
+        const   tommRoC_hw_bus_device_t*                        const   busDevicePtr,
+                tommRoC_hw_devices_mems_mma845xq_type_enum_t*   const   MMA845xQTypePtr);
+
+/**
+ * Get MEMS acceleration result as natural [float] format.
+ *
+ * param[in]        busDevicePtr            bus device pointer.
+ * param[out]       resultPtr               result structure [g] pointer.
+ *
+ * return tommRoC_hw_err_enum_t
+ */
+tommRoC_hw_err_enum_t tommRoCHwDevicesMEMSMMA845xQGet(
+        const   tommRoC_hw_bus_device_t*                        const   busDevicePtr,
+                tommRoC_hw_mems_def_result_t*                   const   resultPtr);
+
+/**
+ * Get MEMS acceleration result as signed 16-bit format.
+ *
+ * param[in]        busDevicePtr            bus device pointer.
+ * param[out]       resultPtr               result structure [mg] pointer.
+ *
+ * return tommRoC_hw_err_enum_t
+ */
+tommRoC_hw_err_enum_t tommRoCHwDevicesMEMSMMA845xQGet16Bit(
+        const   tommRoC_hw_bus_device_t*                        const   busDevicePtr,
+                tommRoC_hw_mems_def_result_16bit_t*             const   resultPtr);
+
+#endif

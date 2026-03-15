@@ -1,0 +1,588 @@
+Version 1.3.16 [20xx/xx/xx]
+---------------------------
+*
+
++ libs
+------
+    * awsIoT/coreHTTP REL 3.1.2 (2026/01/28)
+    * awsIoT/coreMQTT REL 2.3.1 (2024/07/12)
+    * awsIoT/coreSNTP REL 1.3.1 (2024/06/18)
+    * azureSdk REL 1.2.0 (2021-09-09)
+    * blueNRG2 REL v3.3.0 (2022/06/30)
+    * cryptoauthlib REL 20201017-3.2.4
+    * dw1000Driver REL 05.01.01
+    * freemodbus REL 1.6.0 (2018-09-13)
+    * FreeRTOSCellularInterface REL v1.4.2 (2026/02/05)
+    * levelX REL 6.5.0 (2026/03/06)
+    * libmodbus REL 3.0.8 (2019-07-31)
+    * lvgl REL v9.5.0 (2026/02/18)
+    * lwesp REL develop (2024/04/14)
+    * LwIP REL 2.2.1 (06-Feb-2025)
+    * NfcLibrary REL 1.3
+	* pahoMQTTEmbedded REL master 20240118
+    * STMems_Standard_C_drivers REL v2.02 (2023/03/09)
+    * StNfc3 REL 2.1.0 (2019/12/13)
+    * u8g2 REL 2.29.11 (2021/09/03)
+    * ucglib REL master (2020/01/22)
+    * WCON_SDK REL v2.4.0 (2025/03/17)
+
++ source
+--------
+    * coreHTTP valueStrPtr bug fixed.
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.15 [2026/02/18]
+---------------------------
+* MMC layer added.
+* LwIP layer added.
+* added LwIP for all cellular bus devices.
+* added support for celluar TELIT ME310G1 bus device.
+* bus uart added support for set/get baud-rate and hardware flow control.
+* added PASCO2 sensor/CO2 sensor bus device.
+* added setup UART baud-rate/hardware flow control for ESP32LWEsp bus device.
+* added setup UART baud-rate/hardware flow control for all the cellular bus devices.
+
++ libs
+------
+    * awsIoT/coreHTTP REL 3.1.2 (2026/01/28)
+    * awsIoT/coreMQTT REL 2.3.1 (2024/07/12)
+    * awsIoT/coreSNTP REL 1.3.1 (2024/06/18)
+    * azureSdk REL 1.2.0 (2021-09-09)
+    * blueNRG2 REL v3.3.0 (2022/06/30)
+    * cryptoauthlib REL 20201017-3.2.4
+    * dw1000Driver REL 05.01.01
+    * freemodbus REL 1.6.0 (2018-09-13)
+    * FreeRTOSCellularInterface REL v1.4.2 (2026/02/05)
+    * levelX REL 6.4.5 (2026/01/13)
+    * libmodbus REL 3.0.8 (2019-07-31)
+    * lvgl REL v9.4.0 (2025/10/16)
+    * lwesp REL develop (2024/04/14)
+    * LwIP REL 2.2.1 (06-Feb-2025)
+    * NfcLibrary REL 1.3
+	* pahoMQTTEmbedded REL master 20240118
+    * STMems_Standard_C_drivers REL v2.02 (2023/03/09)
+    * StNfc3 REL 2.1.0 (2019/12/13)
+    * u8g2 REL 2.29.11 (2021/09/03)
+    * ucglib REL master (2020/01/22)
+    * WCON_SDK REL v2.4.0 (2025/03/17)
+
++ source
+--------
+    *
+
++ template
+----------
+    * ESP32C6 (RISC-V) buses clk bug fixed. 
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.12 [2024/12/02]
+---------------------------
+* added bus extended layer to allow special (double, empty, linked) buses.
+* partial implementation for blueNRG2 BLE bus device.
+* added support for ETH ADIN1110 comm bus device.
+* added support for ublox LaraL6/LaraR6 comm bus device.
+* added support for NVD display bus device.
+
++ libs
+------
+    * awsIoT/coreHTTP REL 3.0.0 (2022/10/14)
+    * awsIoT/coreMQTT REL 2.1.1 (2022/11/10)
+    * azureSdk REL 1.2.0 (2021-09-09)
+    * blueNRG2 REL v3.3.0 (2022/06/30)
+    * cryptoauthlib REL 20201017-3.2.4
+    * dw1000Driver REL 05.01.01
+    * freemodbus REL 1.6.0 (2018-09-13)
+    * FreeRTOSCellularInterface REL v1.4.0 (2024/06/11)
+    * libmodbus REL 3.0.8 (2019-07-31)
+    * lwesp REL develop (2024/04/14)
+    * NfcLibrary REL 1.3
+	* pahoMQTTEmbedded REL 20180305
+    * STMems_Standard_C_drivers REL v2.02 (2023/03/09)
+    * StNfc3 REL 2.1.0 (2019/12/13)
+    * u8g2 REL 2.29.11 (2021/09/03)
+    * ucglib REL master (2020/01/22)
+
++ source
+--------
+    *
+
++ template
+----------
+    * support for FATFS SQL added.
+    * support for FileX added.
+    * support for FileX SQL added.
+    * improvements on ESP32 BLE.
+    * improvements on bus for all the environments.
+
++ test
+------
+    * SPI transceive added to faked SPI master bus.
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.11 [2023/12/09]
+---------------------------
+* added Transceive function for SPI.
+* improvements on buttonClick layer.
+* added coreHTTP and coreMQTT at network layer.
+* added devices/comm/cellular devices layer.
+* added devices/comm/ESP32LWEsp devices layer.
+* added devices/display/u8g2 devices layer.
+* added devices/display/ucglib devices layer.
+* extended UDP support for socket layer.
+
++ libs
+------
+    * awsIoT/coreHTTP REL 3.0.0 (2022/10/14)
+    * awsIoT/coreMQTT REL 2.1.1 (2022/11/10)
+    * azureSdk REL 1.2.0 (2021-09-09)
+    * cryptoauthlib REL 20201017-3.2.4
+    * dw1000Driver REL 05.01.01
+    * freemodbus REL 1.6.0 (2018-09-13)
+    * FreeRTOSCellularInterface REL main (2023/11/28)
+    * libmodbus REL 3.0.8 (2019-07-31)
+    * lwesp REL develop (2023/11/28)
+    * NfcLibrary REL 1.3
+	* pahoMQTTEmbedded REL 20180305
+    * STMems_Standard_C_drivers v2.02 (2023-03-09)à
+    * StNfc3 REL 2.1.0 (2019/12/13)
+    * u8g2 REL 2.29.11 (2021/09/03)
+    * ucglib REL master (2020/01/22)
+
++ source
+--------
+    * added devices/comm/cellular devices layer based on FreeRTOSCellularInterface library.
+    * added devices/comm/ESP32LWEsp devices layer based on lwesp library.
+    * added devices/display/u8g2 devices layer based on u8g2 library.
+    * added devices/display/ucglib devices layer based on ucglib library.
+
++ template
+----------
+    * improvements on ARM buses error handler.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.10 [2022/09/16]
+---------------------------
+* moved documentation into doc folder.
+* added devices/capTouch layer.
+* added devices/sensorHub layer.
+* added net/SNTP layer.
+* added protocol/modbus layer.
+* added buttonClickMbed layer.
+* added oneWire/oneWireDevice layer.
+* added devices/capTouch/CY8CMBR3xxx device.
+* added devices/comm/DW1000 device.
+* added devices/GPS/camM8 device.
+* added devices/sensorHub/MAX32664 device.
+
++ libs
+------
+    * azureSdk 1.2.0 (2021-09-09).
+    * cryptoauthlib V3.2.4-20201017.
+    * dw1000Driver 05.01.01.
+    * freemodbus 1.6.0 (2018-09-13).
+    * libmodbus 3.0.8 (2019-07-31).
+    * NfcLibrary V1.3.
+	* pahoMQTTEmbedded 20180305.
+
++ source
+--------
+	*
+
++ template
+----------
+    * added partial Atmel support layer.
+    * added partial GD32 support layer.
+    * improvements on FATFS layer.
+    * added mongoose layer.
+    * improvements on net layer.
+	* improvements on UART/IRQ layer.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.9 [2021/09/01]
+--------------------------
+* added debug layer.
+* removed guard in Bus layer.
+* first partial implementation of buttonClick layer.
+* added net/azure layer.
+* added net/HTTP layer.
+* added devices/comm/ESP32AT layer.
+* added devices/comm/GSMGPRS layer.
+* added devices/ledDriver layer.
+* added devices/memory/flash/AT25DNxxx layer.
+* added devices/memory/flash/S25FLxxxL layer.
+* added devices/memory/flash/SST25VF0xxB layer.
+* added devices/memory/flash/W25Qxxx layer.
+* renamed devices/MEMS/acc to devices/MEMS/gravity.
+
++ libs
+------
+    * azureSdk 1.1.0 (2021-03-09).
+    * cryptoauthlib V3.2.4-20201017.
+    * NfcLibrary V1.3.
+	* pahoMQTTEmbedded 20180305.
+
++ source
+--------
+	* improvements on net/MQTT layer.
+	* improvements on net/socket layer
+
++ template
+----------
+	* improvements on bus layer for all environments.
+    * disabled FATFS in case of not defined __TOMMROC_HW_USE_FAT_FS_TEMPLATE__.
+	* improvements on net/BSDSocket.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.8 [2020/12/17]
+--------------------------
+* added "CLEAR_TO_SEND_DATA" and "CLEAR_RECEIVED_DATA" function in Bus layer.
+* improvements on Net layer.
+* added Compass in MEMS layer.
+* improvements on MEMS layer.
+* new devices driver added.
+* for GNUC compiler, added GNUC Major/Minor/Patch version in Version (in accordance with tommRoC library).
+
++ libs
+------
+    * cryptoauthlib V3.2.4-20201017.
+    * NfcLibrary V1.3.
+	* pahoMQTTEmbedded 20180305.
+
++ source
+--------
+    * linked pahoMQTTEmbedded library for MQTT client functionality.
+	* rework of MEMS layer.
+
++ template
+----------
+    * removed MQTT client in template, because now it is used pahoMQTTEmbedded library.
+	* I2C/SPI bus for STM32 moved from polling to interrupt mode.
+	* added "CLEAR_TO_SEND_DATA" and "CLEAR_RECEIVED_DATA" function for all environment Uart Bus layer.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.7 [2020/07/07]
+--------------------------
+* added Net layer (DHCP, DNS, MQTT client, socket interfaces).
+* in bus layer, added "IsDataToTxPending/DataToTxPendingAmount" functionality.
+* worked on comm/LPWA/HL780x device.
+* improvements on fuelGauge common part devices.
+* improvements on MEMS common part devices.
+* added memory/eeprom/AT24CM02 device.
+* added memory/flash/MX25Rxx35F/MX25R2035F device.
+* added memory/flash/MX25Rxx35F/MX25R6435F device.
+* added sensor/HRSpO2/MAX86916 device.
+
++ libs
+------
+    * NfcLibrary V1.3.
+
++ source
+--------
+    * added DeviceNoBus in busDevice layer.
+
++ template
+----------
+    * added FATFS layer.
+	* added uartDebug layer.
+	* worked on busUARTSw layer.
+	* UART for STM32Fx compatible with 8bit and 9bit word length.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.6 [2020/03/18]
+--------------------------
+* added comm/HTTP layer.
+* added comm/NMEA layer.
+* added DEF/fuelGauge layer for common fuelGauge hardware.
+* added ADCChip/ADS/ADS1119 device.
+* added new functionalities to comm/LPWA/HL780x device.
+* extended functionalities to comm/UWBBLE/DWM1001 device.
+* added fuelGauge/BQ35100 device.
+* added memory/flash/AT25SF1x1/AT25SF161 device.
+* added memory/flash/IS25LP0xxA/IS25LP032A device.
+* added memory/flash/IS25LP0xxA/IS25LP064A device.
+* added sensor/HRSpO2/MAX30102 device.
+
++ libs
+------
+    * NfcLibrary V1.3.
+
++ source
+--------
+    * improvements on Bus layer.
+    * improvements on ADCChip/ADS devices.
+    * improvements on audio/VS1053 device.
+    * improvements on fuelGauge devices in accordance with DEF/fuelGauge layer.
+    * improvements on all memory/flash devices.
+    * improvements on MEMS/LIS2DW12 device.
+    * improvements on tempHum/HTS221 device.
+
++ template
+----------
+    * added Nordic environment.
+    * moved old EFM32 environment in generic SiLabs environment and added EFR32/MGM21 hardware platform.
+    * improvements on all bus/env/arm UART/I2C/SPI to improve buses performance.
+
++ test
+------
+    * extended for new devices.
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.5 [2019/09/03]
+--------------------------
+* added accented characters (à/è/ì/ò/ù) to fonts.
+* added IP address in comm layer.
+* added audio/VS1053 device.
+* improvements on comm/UWBBLE/DWM1001 device.
+* extended functionality of comm/LPWA/HL780x device.
+* added reset for dotMatrix/SSD1306 device.
+
++ libs
+------
+    * NfcLibrary V1.3.
+
++ source
+--------
+    * improvements on MEMS/LIS2DW12 device.
+
++ template
+----------
+    * refactor bus/env/arm layer.
+    * added bus/env/esp32 spi layer.
+
++ test
+------
+    * added "_clear_data" to "__fake__" buses.
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.4 [2019/06/19]
+--------------------------
+* for ARM platform, "Release" build configuration compiler optimization back to -O3 from -Os.
+* added ESP32 platform compile support.
+* added "clearData" function to bus/busDevice layer.
+* added UWBBLE DWM1001 device support.
+* added partial LPWA HL780x device support (work in progress).
+* added dot matrix display SSD1306 device support.
+* added partial sensor ECG ADAS1000 device support (work in progress).
+* added fuel gauge MAX1720x active/hibernate.
+* fuel gauge MAX1726x I2C 7 bit addresses bug fixed.
+* extended MEMS LIS2DW12 configuration (interrupt active pin polarity).
+
++ libs
+------
+    * NfcLibrary V1.3.
+
++ source
+--------
+    * little rework of sensor HTS221 device.
+    * in "tommRoCHwDevicesCommonStart", added "busDeviceClearData" (clear data for every busDevices start).
+
++ template
+----------
+    * added ESP32 environment support.
+    * for I2C/SPI bus, increased timeout for read/write byte (3 -> 5 msec).
+
++ test
+------
+    *
+
++ NOTES
+-------
+    * in "busDevice" layer, use of "tommRoCHwBusWriteReadBuffer" commented out because not working with SwipBox Infinity.
+
+
+Version 1.3.3 [2019/04/10]
+--------------------------
+* added fuel gauge MAX1726x device support.
+* added fuel gauge MAX1720x device custom register configuration at startup.
+* added GPIOPWM PCA9685 device sleep/wake functionality.
+* added memory EEPROM 24xx128 device support.
+* added file system support for all memory flash devices.
+* added sensor tempHum HTS221 device sleep/wake functionality.
+
++ libs
+------
+    * NfcLibrary V1.3.
+
++ source
+--------
+    *
+
++ template
+----------
+    * added/extended I2C/SPI/UART buses ARM EFM32 support.
+    * little refactor of I2C/SPI master layer (now the complete handler pointer is passed by functions).
+
++ test
+------
+    * added new devices test support.
+
+
+Version 1.3.2 [2019/03/11]
+--------------------------
+* for ARM platform, "Release" build configuration compiler optimization moved from -O3 to -Os (for size).
+* PN7120 bus device moved to PN71x0 (added compatibility with PN7150 chip).
+* PN71x0 bus device disabled (commented out) "CARDEMU_SUPPORT" support.
+* added "write/read buffer" in "tommRoCHwBus" layer (targer is for I2C bus).
+* added "lowPowerEnter/lowPowerExit" in "tommRoCHwBus" layer.
+* refactor of "tommRoCHwCommNFCNDEF" layer.
+* refactor of "tommRoCHwDevicesCommSubGHzRFM69HW" bus device.
+* added "MMA8452Q" MEMS bus device.
+* refactoring of library version (define moved to "tommRoCHwVersion.h" file).
+
++ libs
+------
+    * NfcLibrary V1.3.
+
++ source
+--------
+    * removed "tommRoCHwBusNotGuarded" layer for little reduction of layer binary size.
+    * general little refactoring of some library bus devices.
+    * some little bug fixed on "tommRoCHwDevicesMEMSConv" layer.
+
++ template
+----------
+    * generic little refactor for code size.
+    * added bus "lowPowerEnter/lowPowerExit" functionality for ARM platform.
+    * little refactor of I2C/SPI/UART template.
+
++ test
+------
+    * added bus "lowPowerEnter/lowPowerExit".
+    * added test for "tommRoCHwDevicesMEMSConv" layer.
+
+
+Version 1.3.1 [2019/01/28]
+--------------------------
+* heavy reworked/refactored version.
+
++ libs
+------
+    * NfcLibrary V1.2.
+
++ source
+--------
+    * NFC NDEF improvements.
+    * NFC SNEP added.
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
+
+Version 1.2.2 [2018/10/19]
+--------------------------
+* improvements in flash AT45DB0x1E core "wait for ready" function (skipped delay for fast operations).
+* improvements in fuel gauge MAX1720x (added specific MAX17205 get values and get isMAX17205 function).
+
++ libs
+------
+    * NfcLibrary.
+
++ source
+--------
+    * 
+
++ template
+----------
+    * 
+
++ test
+------
+    * 
+
+    
+Version 1.2.1 [2018/10/10]
+--------------------------
+* first in-production version.
+
++ libs
+------
+    * NfcLibrary.
+
++ source
+--------
+    * 
+
++ template
+----------
+    * 
+
++ test
+------
+    * 

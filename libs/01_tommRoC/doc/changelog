@@ -1,0 +1,505 @@
+Version 1.3.16 [20xx/xx/xx]
+---------------------------
+*
+
++ libs
+------
+    * FatFs REL 0.15a (2024/11/22)
+    * FileX REL 6.5.0 (2026/03/06)
+    * jsmn REL master (2021/10/14).
+    * libhelixmp3 REL master (2019/08/31)
+    * littleFs REL 2.11.2 (2025/09/29)
+    * microtar REL 0.1.0 (2017/01/16)
+    * miniz REL 3.0.2 (2023/01/15)
+    * RTT REL v8.56a main (2025/08/05)
+    * SQLite REL 3.52.0 (2026-03-06)
+
++ source
+--------
+    * fileX 32->64 direntries.
+
++ template
+----------
+    *
+    
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.15 [2026/02/17]
+---------------------------
+* defined CRC16_MODBUS.
+* added StringToBool functionality.
+* added StringWithSeparatorToXArray functionalities.
+* improvements on Debug and Log.
+* debug RTT for ARM environment.
+* added colors on debug - where supported.
+* added CO2 unit measure.
+* added MD HMAC to Crypto layer.
+* first support for IAR compiler.
+* added FileX layer.
+* added isPrint to String layer.
+* added StringWithSeparator to String layer.
+* added TOMMROC_UTIL_DESIGNATED_SECTION stuff.
+* added MemCopySafe and MemMoveSafe.
+
++ libs
+------
+    * FatFs REL 0.15a (2024/11/22)
+    * FileX REL 6.4.5 (2026/01/12)
+    * jsmn REL master (2021/10/14).
+    * libhelixmp3 REL master (2019/08/31)
+    * littleFs REL 2.11.2 (2025/09/29)
+    * microtar REL 0.1.0 (2017/01/16)
+    * miniz REL 3.0.2 (2023/01/15)
+    * RTT REL v8.56a main (2025/08/05)
+    * SQLite REL 3.51.2 (2026-01-09)
+
++ source
+--------
+    * JSON ExtractObject and ExtractArray added check for '{' and '}' ('[' and ']') at the beginning and end of the input string.
+    * FIFOISR added compile optimization for faster code.
+    
++ template
+----------
+    *
+    
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.12 [2024/12/02]
+---------------------------
+* crypto Base64 added.
+* generic file system definition added.
+* log layer added.
+* SQL layer added.
+* improvements on DateTime.
+* ESP32 RISCV environment added.
+* improvements on FS (littlefs) performances.
+* some support to uint64_t/int64_t added.
+* OsIsFromISR functionality added.
+* OsCritical added specificData parameter to be compatible with all the environments.
+
++ libs
+------
+    * jsmn REL master (2021/10/14).
+    * libhelixmp3 REL master (2019/08/31)
+    * littleFs REL 2.9.3 (2024/04/29)
+    * microtar REL 0.1.0 (2017/01/16)
+    * miniz REL 3.0.2 (2023/01/15)
+    * SQLite REL 3.46.0 (2024-05-23)
+
++ source
+--------
+    * improvements on _vsnprintf in STDIO. va_list parameter passed by reference because of possible indetermination.
+    * improvements on Timer: removed check for uptime is init in order to improve performances.
+
++ template
+----------
+    * support for STM32F1 and STM32G0 added.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.11 [2023/12/08]
+---------------------------
+* added Client CERT/Client Private Key/Auth Mode for Crypto SSL (in accordance with tommRoCSw/mbedtls).
+* added dateTime to string functionality.
+* extended print debug with 2 strings PLUS_STRING_PLUS_x.
+* some bugs fixed for JSON.
+* added extend delay [msec] to Os layer.
+* added get UUID as string to Os layer.
+* some bugs fixed for String<->numeric conversion.
+* added support for CLI in util layer.
+
++ libs
+------
+    * jsmn REL master (2021/10/14).
+    * libhelixmp3 REL master (2019/08/31)
+    * littleFs REL 2.8.1 (2023/10/31)
+    * microtar REL 0.1.0 - Jan 16, 2017
+    * miniz REL 3.0.2 (Jan 15, 2023)
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.10 [2022/09/16]
+---------------------------
+* moved documentation into doc folder.
+* added DES/DES3/MD into crypto layer.
+* added TOMMROC_CTA_ERROR_FOR_PRINT_SIZE_OF at CTA layer.
+* added directory functionality at FS/FSMbed layer.
+* added resetCause to Os layer.
+* added split to String layer.
+* improvements on String layer.
+* improvements on Unity layer.
+* added split to Util layer.
+* added toStr to Version layer.
+* improvements on Version layer.
+
++ libs
+------
+    * littleFs V2.5.0
+    * jsmn.
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.9 [01/09/2021]
+--------------------------
+* added is little/big endian in Env layer.
+* added linearAlgebra layer.
+* extended RAM buffer for FS layer to improve performances.
+* added isBusy functionality to FS layer.
+* added FSMbed layer.
+* added list layer.
+* added trigonometric functions in Math layer.
+* added observer/observerMbed layer.
+* added queue/queueMbed layer.
+* added isStarted in Timer layer.
+* added angle [radian/degree] unit measure.
+
++ libs
+------
+    * littleFs V2.4.1
+    * jsmn.
+
++ source
+--------
+    * improvements on FIFOISR to speed up (special case length = 1).
+    * improvements on JSON layer (string with lenght = 0 bug fixed).
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.8 [2020/12/17]
+--------------------------
+* added crypto SSL layer.
+* added "TOMMROC_DEBUG_PRINTLN_PLUS_STRING_LEN" and "TOMMROC_DEBUG_PRINTLN_PLUS_FLOAT" in Debug layer.
+* added RAW type in Debug layer.
+* added "IS_PRINT_PENDING" and "IS_SAVE_PENDING" functionality in Debug layer.
+* added "WaitForFreeAndPush", "WaitForFreeMultiPush" and "Skip" functionality in FIFO layer.
+* added vector module functionality in Geometry layer.
+* added JSON builder layer.
+* added Sqrt in Math layer.
+* added HARD_CLOCK (CPU cycle counter) functionality in Os layer.
+* added some unit of measure in UnitMeasure layer.
+* for GNUC compiler, added GNUC Major/Minor/Patch version in Version layer.
+
++ libs
+------
+    * littleFs V2.2
+    * jsmn.
+
++ source
+--------
+    * improvement in Math layer.
+	* improvement in String layer.
+
++ template
+----------
+    * refactoring of some layers.
+
++ test
+------
+    * added Geometry layer test.
+    * added CCTalk CRC-CCITT test in CRC16 layer test.
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.7 [2020/07/07]
+--------------------------
+* little improvement on FS layer.
+* added getUptime in usec in Os layer.
+* added timestamp/dateTime min/max valid years values in Os layer.
+* added pressure unit measure in UnitMeasure layer.
+
++ libs
+------
+    * littleFs V2.2
+    * jsmn.
+
++ source
+--------
+    * little improvements in Os layer to speed up delay functions (removed is 0 check).
+
++ template
+----------
+    *
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.6 [2020/03/18]
+--------------------------
+* created empty Atomic layer (future working on).
+* added CCTalk protocol in Crypto layer.
+* extend to unsigned 32 bit all the indexes in FIFO layer.
+* improvements in FS layer (according to littleFs V2.1 version).
+* little improvements in JSON layer.
+* added Get Whole/Decimal for float functionality in Math layer.
+* added RoundDiff with limit functionality in Math layer.
+* added string to signed numbers conversion in String layer.
+* added Set and Get duration/Elapsed and Update functionality in Timer layer.
+* little improvements in UnitMeasure layer.
+* added append/extract signed numbers in UtilBuffer functionality.
+
++ libs
+------
+    * littleFs V2.1.
+    * jsmn.
+
++ source
+--------
+    *
+
++ template
+----------
+    * added Nordic environment.
+    * moved old EFM32 environment in generic SiLabs environment and added EFR32/MGM21 hardware platform.
+
++ test
+------
+    * improvements on polynomial CRC8/CRC16/CRC32.
+    * improvements in FS layer (according to littleFs V2.1 version).
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.5 [2019/09/03]
+--------------------------
+* added JSON layer.
+* added STDIO layer.
+* printf bug fixed (optimization of _vsnprintf function).
+* in Env layer, added memory/flash memory bit size architecture defines.
+* refactor of FIFO layer for memory copy optimization.
+
++ libs
+------
+    * littleFs V1.7.
+    * jsmn.
+
++ source
+--------
+    * added STDIO layer and then functionality moved from StringStdio to STDIO.
+
++ template
+----------
+    * refactor of arm/critical layer.
+    * refactor of arm/rtc/EFM32 layer.
+
++ test
+------
+    * added tests for printf bug fixed (optimization of _vsnprintf function) in STDIO layer.
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.4 [2019/06/19]
+--------------------------
+* for ARM platform, "Release" build configuration compiler optimization back to -O3 from -Os.
+* added ESP32 platform compile support.
+* added disable/enable WDT in OS interface.
+
++ libs
+------
+    * littleFs V1.7.
+
++ source
+--------
+    * refactor of "tommRoCDebugDateTime" for possible buffer overflow bug fix.
+
++ template
+----------
+    * added ESP32 environment support.
+    * added/extended ARM EFM32 OS lowPower/RTC template.
+
++ test
+------
+    *
+
++ NOTES
+-------
+    *
+
+
+Version 1.3.3 [2019/04/10]
+--------------------------
+* added file system layer (based on littlefs library).
+* added unit of measure for electronic capacity [ampere/hour].
+* added bit/byte unit of measure.
+
++ libs
+------
+    * littleFs V1.7.
+
++ source
+--------
+    * added all file system stuff.
+
++ template
+----------
+    * added file system in RAM layer (inRAMFS).
+    * split template environment ARM into specific files for different producer.
+
++ test
+------
+    * added file system in RAM tests, for both low level littlefs library and general use cases.
+
+
+Version 1.3.2 [2019/03/11]
+--------------------------
+* for ARM platform, "Release" build configuration compiler optimization moved from -O3 to -Os (for size).
+* for ARM/ARMLINUX/LINUX/WIN platforms, used library implementation of sprintf/snprintf/vsnprintf functionality (embedded size optimized).
+* little refactoring of Math layer.
+* little improvement on definition of String layer.
+* added assert positive/negative to Unity layer.
+* refactoring of library version (define moved to "tommRoCVersion.h" file).
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    * added new "tommRoCMath" function test.
+    * added new "sprintf/snprintf/vsnprintf" function test.
+
+
+Version 1.3.1 [2019/01/28]
+--------------------------
+* heavy reworked/refactored version.
+
++ libs
+------
+    *
+
++ source
+--------
+    * first implementation of sleep (low power) layer.
+
++ template
+----------
+    * first implementation of sleep (low power) layer.
+
++ test
+------
+    *
+
+
+Version 1.2.2 [2018/11/02]
+--------------------------
+*
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    * Os ARM RTC NXP RTC not started at init bug fixed.
+
++ test
+------
+    *
+
+
+Version 1.2.1 [2018/10/10]
+--------------------------
+* first in-production version.
+
++ libs
+------
+    *
+
++ source
+--------
+    *
+
++ template
+----------
+    *
+
++ test
+------
+    *
