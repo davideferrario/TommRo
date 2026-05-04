@@ -482,14 +482,16 @@ tommRoC_err_enum_t tommRoCFSDiskFormat(
  *
  * param[in]        fsHandlePtr             file system handle pointer.
  * param[out]       totalSizeBytePtr        size of the disk [byte] pointer.
- * param[out]       usedSizeBytePtr         current used size [byte] in the disk.
+ * param[out]       usedSizeBytePtr         current used size [byte] in the disk pointer.
+ * param[out]       availableSizeBytePtr    current available size [byte] in the disk pointer.
  *
  * return tommRoC_err_enum_t
  */
 tommRoC_err_enum_t tommRoCFSDiskGetSize(
                 tommRoC_fs_file_system_t*           const   fsHandlePtr,
                 uint32_t*                           const   totalSizeBytePtr,
-                uint32_t*                           const   usedSizeBytePtr);
+                uint32_t*                           const   usedSizeBytePtr,
+                uint32_t*                           const   availableSizeBytePtr);
 
 
 /******************* File system functions */

@@ -68,6 +68,7 @@
 #error "Not supported ARM compiler"
 #endif
 
+#if defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_GCC)
 #if (__ARM_ARCH == 6) && defined(__ARM_ARCH_6M__) && (__ARM_ARCH_6M__ == 1)
 #define TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_CORTEX_M0_M0PLUS
 #elif (__ARM_ARCH == 7) && defined(__ARM_ARCH_7M__) && (__ARM_ARCH_7M__ == 1)
@@ -76,6 +77,19 @@
 #define TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_CORTEX_M33
 #elif (__ARM_ARCH == 7) && defined(__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1)
 #define TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_CORTEX_M4
+#endif
+#endif
+
+#if defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_IAR)
+#if defined(__ARM_ARCH_PROFILE) && __ARM_ARCH_PROFILE == 'M' && __ARM_ARCH == 6
+#define TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_CORTEX_M0_M0PLUS
+#elif defined(__ARM_ARCH_PROFILE) && __ARM_ARCH_PROFILE == 'M' && __ARM_ARCH == 7 && !__ARM_FEATURE_DSP
+#define TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_CORTEX_M3
+#elif defined(__ARM8M_MAINLINE__) || defined(__ARM8EM_MAINLINE__)
+#define TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_CORTEX_M33
+#elif defined(__ARM_ARCH_PROFILE) && __ARM_ARCH_PROFILE == 'M' && __ARM_ARCH == 7 && __ARM_FEATURE_DSP
+#define TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_CORTEX_M4
+#endif
 #endif
 
 #elif defined (__GNUC__) && (defined (__XTENSA__) || defined (__riscv) || defined (ESP_PLATFORM))

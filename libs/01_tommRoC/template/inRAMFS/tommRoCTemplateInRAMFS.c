@@ -101,9 +101,9 @@ tommRoC_err_enum_t tommRoCTemplateInRAMFSStart(
     TOMMROC_PARAM_CHECK_ON_ZERO_RETURN_ERR(RAMBufferErasableBlockSize);
 
     fsConfig.contextPtr         = RAMBufferPtr;
-    fsConfig.readCb             = (tommRoC_fs_read_funct_t) _read_block;
-    fsConfig.writeCb            = (tommRoC_fs_write_funct_t) _write_block;
-    fsConfig.eraseCb            = (tommRoC_fs_erase_funct_t) _erase_block;
+    fsConfig.readCb             = _read_block;
+    fsConfig.writeCb            = _write_block;
+    fsConfig.eraseCb            = _erase_block;
     fsConfig.erasableBlockSize  = RAMBufferErasableBlockSize;
     fsConfig.erasableBlockCount = RAMBufferSize / RAMBufferErasableBlockSize;
 

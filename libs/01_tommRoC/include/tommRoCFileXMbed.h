@@ -130,14 +130,16 @@ tommRoC_err_enum_t tommRoCFileXMbedDiskFormat(
 /**
  * Get size of the Mbed file system fileX disk [byte].
  *
- * param[out]       totalSizePtr            size of the disk [byte] pointer.
- * param[out]       usedSizePtr             current used size [byte] in the disk.
+ * param[out]       totalSizeBytePtr        size of the disk [byte] pointer.
+ * param[out]       usedSizeBytePtr         current used size [byte] in the disk pointer.
+ * param[out]       availableSizeBytePtr    current available size [byte] in the disk pointer.
  *
  * return tommRoC_err_enum_t
  */
 tommRoC_err_enum_t tommRoCFileXMbedDiskGetSize(
-                uint32_t*                               const   totalSizePtr,
-                uint32_t*                               const   usedSizePtr);
+                uint32_t*                               const   totalSizeBytePtr,
+                uint32_t*                               const   usedSizeBytePtr,
+                uint32_t*                               const   availableSizeBytePtr);
 
 
 /******************* File system functions */

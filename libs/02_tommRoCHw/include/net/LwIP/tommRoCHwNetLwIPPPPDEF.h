@@ -58,6 +58,26 @@ typedef enum {
 } tommRoC_hw_net_lwip_ppp_def_auth_type_enum_t;
 
 
+// Enumeration of tommRoC hardware net LwIP PPP error codes.
+typedef enum {
+
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_NONE = 0,     // No error.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_PARAM,        // Invalid parameter.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_OPEN,         // Unable to open PPP session.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_DEVICE,       // Invalid I/O device for PPP.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_ALLOC,        // Unable to allocate resources.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_USER,         // User interrupt.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_CONNECT,      // Connection lost.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_AUTHFAIL,     // Failed authentication challenge.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_PROTOCOL,     // Failed to meet protocol.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_PEERDEAD,     // Connection timeout.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_IDLETIMEOUT,  // Idle Timeout.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_CONNECTTIME,  // Max connect time reached.
+    TOMMROC_HW_NET_LWIP_PPP_DEF_ERROR_LOOPBACK,     // Loopback detected.
+
+} tommRoC_hw_net_lwip_ppp_def_error_enum_t;
+
+
 // Enumeration of tommRoC hardware net LwIP PPP phase type.
 typedef enum {
 
@@ -78,8 +98,11 @@ typedef enum {
 } tommRoC_hw_net_lwip_ppp_def_phase_type_enum_t;
 
 
+// tommRoC hardware net LwIP PPP link status notify callback function type definition.
+typedef void (*tommRoC_hw_net_lwip_ppp_def_link_status_notify_cb_funct_t)(const tommRoC_hw_net_lwip_ppp_def_error_enum_t PPPError);
+
 // tommRoC hardware net LwIP PPP layer phase notify phase callback function type definition.
-typedef void (*tommRoC_hw_net_lwip_ppp_def_notify_phase_funct_t)(const tommRoC_hw_net_lwip_ppp_def_phase_type_enum_t phase);
+typedef void (*tommRoC_hw_net_lwip_ppp_def_notify_phase_funct_t)(const tommRoC_hw_net_lwip_ppp_def_phase_type_enum_t PPPPhase);
 
 /*******************************************************************************
  * functions

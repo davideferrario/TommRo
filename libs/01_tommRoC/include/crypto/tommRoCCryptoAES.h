@@ -246,8 +246,7 @@ tommRoC_err_enum_t tommRoCCryptoAESSetProp(
  *
  * return uint16_t
  */
-uint16_t tommRoCCryptoAESKeySize(
-        const   tommRoC_crypto_aes_key_size_enum_t  aesKeySize);
+uint16_t tommRoCCryptoAESKeySize(const tommRoC_crypto_aes_key_size_enum_t aesKeySize);
 
 /**
  * Get AES encrypted data size for a plain text size.

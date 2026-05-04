@@ -12,7 +12,7 @@
 
 #include "mbedtls/version.h"
 
-#if (MBEDTLS_VERSION_MAJOR == 2)
+#if (MBEDTLS_VERSION_MAJOR >= 2)
 #include "mbedtls/md2.h"
 #include "mbedtls/md4.h"
 #endif
@@ -29,7 +29,7 @@
 /*******************************************************************************
  * local vars
  ******************************************************************************/
-#if (MBEDTLS_VERSION_MAJOR == 2)
+#if (MBEDTLS_VERSION_MAJOR >= 2)
 static mbedtls_md2_context  _md2_ctx;
 static mbedtls_md4_context  _md4_ctx;
 #endif
@@ -45,7 +45,7 @@ static mbedtls_md5_context  _md5_ctx;
 
 tommRoC_sw_err_enum_t tommRoCSwMD2Start(void) {
 
-#if (MBEDTLS_VERSION_MAJOR == 2)
+#if (MBEDTLS_VERSION_MAJOR >= 2)
     TOMMROC_SW_ERR_IF_TOMMROC_SW_LIB_FUNCT_NOT_SUCCESS_RETURN_RESULT(tommRoCSwTemplateMemoryESP32CoreIsInit());
 
     TOMMROC_SW_ERR_IF_TOMMROC_SW_LIB_FUNCT_NOT_SUCCESS_RETURN_RESULT(tommRoCSwTemplateMDESP32Wrapper_MD2_Init(&_md2_ctx));
@@ -62,7 +62,7 @@ tommRoC_sw_err_enum_t tommRoCSwMD2Start(void) {
 
 tommRoC_sw_err_enum_t tommRoCSwMD4Start(void) {
 
-#if (MBEDTLS_VERSION_MAJOR == 2)
+#if (MBEDTLS_VERSION_MAJOR >= 2)
     TOMMROC_SW_ERR_IF_TOMMROC_SW_LIB_FUNCT_NOT_SUCCESS_RETURN_RESULT(tommRoCSwTemplateMemoryESP32CoreIsInit());
 
     TOMMROC_SW_ERR_IF_TOMMROC_SW_LIB_FUNCT_NOT_SUCCESS_RETURN_RESULT(tommRoCSwTemplateMDESP32Wrapper_MD4_Init(&_md4_ctx));
@@ -97,7 +97,7 @@ tommRoC_sw_err_enum_t tommRoCSwMD2Stop(void) {
             tommRoCCryptoMD2CloseEnv(),
             TOMMRO_C_SW_LOW_LEVEL_ERR);
 
-#if (MBEDTLS_VERSION_MAJOR == 2)
+#if (MBEDTLS_VERSION_MAJOR >= 2)
     TOMMROC_SW_ERR_IF_TOMMROC_SW_LIB_FUNCT_NOT_SUCCESS_RETURN_RESULT(tommRoCSwTemplateMDESP32Wrapper_MD2_Close());
 #endif
 
@@ -110,7 +110,7 @@ tommRoC_sw_err_enum_t tommRoCSwMD4Stop(void) {
             tommRoCCryptoMD4CloseEnv(),
             TOMMRO_C_SW_LOW_LEVEL_ERR);
 
-#if (MBEDTLS_VERSION_MAJOR == 2)
+#if (MBEDTLS_VERSION_MAJOR >= 2)
     TOMMROC_SW_ERR_IF_TOMMROC_SW_LIB_FUNCT_NOT_SUCCESS_RETURN_RESULT(tommRoCSwTemplateMDESP32Wrapper_MD4_Close());
 #endif
 

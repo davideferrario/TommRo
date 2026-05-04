@@ -56,6 +56,14 @@
 // Macro to get base64 encoded size starting from plain size (NULL terminator - '\0' - character NOT included).
 #define TOMMROC_CRYPTO_BASE64_ENCODED_NO_TERM_SIZE_BYTE(plainLen)   (TOMMROC_CRYPTO_BASE64_ENCODED_SIZE_BYTE(plainLen) - TOMMROC_STRING_NULL_TERMINATOR_CHAR_SIZE)
 
+// Macro to get base64 plain size starting from encoded size (NULL terminator - '\0' - character included).
+// NOTE: this is an approximation by excess estimation because there is '=' char special case. encodedLen MUST be an integer multiple of 4.
+#define TOMMROC_CRYPTO_BASE64_PLAIN_SIZE_BYTE(encodedLen)           (((encodedLen / 4) * 3) + TOMMROC_STRING_NULL_TERMINATOR_CHAR_SIZE)
+
+// Macro to get base64 plain size starting from encoded size (NULL terminator - '\0' - character NOT included).
+// NOTE: this is an approximation by excess estimation because there is '=' char special case. encodedLen MUST be an integer multiple of 4.
+#define TOMMROC_CRYPTO_BASE64_PLAIN_NO_TERM_SIZE_BYTE(encodedLen)   (TOMMROC_CRYPTO_BASE64_PLAIN_SIZE_BYTE(encodedLen) - TOMMROC_STRING_NULL_TERMINATOR_CHAR_SIZE)
+
 /*******************************************************************************
  * typedefs
  ******************************************************************************/

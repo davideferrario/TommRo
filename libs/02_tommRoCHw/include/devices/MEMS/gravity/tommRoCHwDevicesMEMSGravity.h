@@ -37,6 +37,7 @@
  ******************************************************************************/
 #include "devices/MEMS/gravity/BMA400/tommRoCHwDevicesMEMSBMA400.h"
 #include "devices/MEMS/gravity/LIS2DS12/tommRoCHwDevicesMEMSLIS2DS12.h"
+#include "devices/MEMS/gravity/LIS2DTW12/tommRoCHwDevicesMEMSLIS2DTW12.h"
 #include "devices/MEMS/gravity/LIS2DW12/tommRoCHwDevicesMEMSLIS2DW12.h"
 #include "devices/MEMS/gravity/MC3479/tommRoCHwDevicesMEMSMC3479.h"
 #include "devices/MEMS/gravity/MMA845xQ/tommRoCHwDevicesMEMSMMA845xQ.h"

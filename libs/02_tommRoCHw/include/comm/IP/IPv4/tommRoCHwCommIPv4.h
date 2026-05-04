@@ -137,6 +137,28 @@ tommRoC_hw_err_enum_t tommRoCHwCommIPv4ItfInit(
                 tommRoC_hw_comm_ip_v4_itf_t*                                const   ipV4ItfPtr);
 
 /**
+ * Check if a string is a valid IPv4 address.
+ *
+ * param[in]        addStrPtr               IPv4 address expressed as string (a1.a2.a3.a4).
+ *
+ * return tommRoC_hw_err_enum_t
+ */
+tommRoC_hw_err_enum_t tommRoCHwCommIPv4AsStringIsValidIPv4(
+        const   char*                                                       const   addStrPtr);
+
+/**
+ * Init an IPv4 as string interface structure - string length version.
+ *
+ * param[in]        addStrPtr               IPv4 address expressed as string (a1.a2.a3.a4).
+ * param[in]        addStrLen               IPv4 address expressed as string length.
+ *
+ * return tommRoC_hw_err_enum_t
+ */
+tommRoC_hw_err_enum_t tommRoCHwCommIPv4AsStringLenIsValidIPv4(
+        const   char*                                                       const   addStrPtr,
+        const   uint16_t                                                            addStrLen);
+
+/**
  * Init an IPv4 as string interface structure.
  *
  * param[in]        addStrPtr               IPv4 address expressed as string (a1.a2.a3.a4).
@@ -148,9 +170,8 @@ tommRoC_hw_err_enum_t tommRoCHwCommIPv4AsStringItfInit(
         const   char*                                                       const   addStrPtr,
                 tommRoC_hw_comm_ip_v4_itf_as_string_t*                      const   ipV4ItfAsStrPtr);
 
-
 /**
- * Init an IPv4 as string interface structure.
+ * Init an IPv4 as string interface structure - string length version.
  *
  * param[in]        addStrPtr               IPv4 address expressed as string (a1.a2.a3.a4).
  * param[in]        addStrLen               IPv4 address expressed as string length.

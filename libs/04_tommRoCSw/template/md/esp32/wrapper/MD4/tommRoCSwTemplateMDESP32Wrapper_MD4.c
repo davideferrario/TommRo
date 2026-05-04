@@ -7,7 +7,7 @@
 #include "TOMMROC.h"
 
 #if defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ESP32)
-#if (MBEDTLS_VERSION_MAJOR == 2)
+#if (MBEDTLS_VERSION_MAJOR >= 2)
 #include "mbedtls/md4.h"
 
 /*******************************************************************************

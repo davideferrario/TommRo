@@ -93,15 +93,17 @@ typedef struct {
 // tommRoC file system interface disk stat struct.
 typedef struct {
 
-    uint32_t totalSize;
-    uint32_t usedSize;
+    uint32_t totalSizeByte;
+    uint32_t usedSizeByte;
+    uint32_t availableSizeByte;
 
 } tommRoC_fs_itf_def_file_system_disk_stat_t;
 
 #define __EMPTY_tommRoC_fs_itf_def_file_system_disk_stat_t__    \
 {                                                               \
-    /* .totalSize */    0,                                      \
-    /* .usedSize */     0,                                      \
+    /* .totalSizeByte */        0,                              \
+    /* .usedSizeByte */         0,                              \
+    /* .availableSizeByte */    0,                              \
 }
 
 

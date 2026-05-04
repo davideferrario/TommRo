@@ -80,13 +80,13 @@
 
 // File system struct size.
 #if defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM)
-#define TOMMROC_FILE_X_FILE_SYSTEM_HANDLE_SIZE  (7640)
+#define TOMMROC_FILE_X_FILE_SYSTEM_HANDLE_SIZE  (8136)
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ESP32)
-#define TOMMROC_FILE_X_FILE_SYSTEM_HANDLE_SIZE  (7640)
+#define TOMMROC_FILE_X_FILE_SYSTEM_HANDLE_SIZE  (8144)
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARMLINUX)
-#define TOMMROC_FILE_X_FILE_SYSTEM_HANDLE_SIZE  (9808)
+#define TOMMROC_FILE_X_FILE_SYSTEM_HANDLE_SIZE  (10312)
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_LINUX)
-#define TOMMROC_FILE_X_FILE_SYSTEM_HANDLE_SIZE  (9808)
+#define TOMMROC_FILE_X_FILE_SYSTEM_HANDLE_SIZE  (10312)
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_WIN)
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_XC8)
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_XC16)
@@ -110,9 +110,8 @@
 #endif
 
 
-// Minimum media memory buffer size.
-#define TOMMROC_FILE_X_MINIMUM_MEDIA_MEMORY_SIZE_BYTE   (512)
-
+// Sector size [byte].
+#define TOMMROC_FILE_X_SECTOR_SIZE_BYTE (512)
 
 // Wait forever timeout for disk format
 #define TOMMROC_FILE_X_DISK_FORMAT_WAIT_FOREVER_TIMEOUT (UINT32_MIN)
@@ -253,7 +252,7 @@ typedef tommRoC_err_enum_t (*tommRoC_file_x_read_funct_t)(
         const   uint32_t            logicalAddStart,
                 void*       const   dataBufferPtr,
         const   uint32_t            dataBufferSize,
-                uint32_t*   const   readedLenghtPtr);
+                uint32_t*   const   readedLengthPtr);
 
 // Write a data region callback function type definition.
 typedef tommRoC_err_enum_t (*tommRoC_file_x_write_funct_t)(
@@ -261,14 +260,14 @@ typedef tommRoC_err_enum_t (*tommRoC_file_x_write_funct_t)(
         const   uint32_t            logicalAddStart,
         const   void*       const   dataBufferPtr,
         const   uint32_t            dataBufferSize,
-                uint32_t*   const   writtenLenghtPtr);
+                uint32_t*   const   writtenLengthPtr);
 
 // Release (erase) a data region callback function type definition.
 typedef tommRoC_err_enum_t (*tommRoC_file_x_release_funct_t)(
                 void*       const   fxMediaDriverInfoPtr,
         const   uint32_t            logicalAddStart,
         const   uint32_t            dataSize,
-                uint32_t*   const   releasedLenghtPtr);
+                uint32_t*   const   releasedLengthPtr);
 
 
 // tommRoC fileX system config struct.
@@ -286,15 +285,8 @@ typedef struct {
     // Release a data region.
     tommRoC_file_x_release_funct_t  releaseCb;
 
-    // Pointer to media memory buffer used by the low level FileX for this media.
-    void*                           mediaMemoryPtr;
-    // Size of media memory buffer - MUST be at least TOMMROC_FILE_X_MINIMUM_MEDIA_MEMORY_SIZE_BYTE - 512 - bytes and one sector size.
-    uint32_t                        mediaMemorySizeByte;
-
-    // Disk total number of sectors.
-    uint32_t                        diskTotalSectors;
-    // Size [byte] per disk sector.
-    uint32_t                        diskBytesPerSector;
+    // Disk raw size [byte].
+    uint32_t                        diskRawSizeByte;
 
 } tommRoC_file_x_file_system_config_t;
 
@@ -304,10 +296,7 @@ typedef struct {
     /* .readCb */               NULL,                   \
     /* .writeCb */              NULL,                   \
     /* .releaseCb */            NULL,                   \
-    /* .mediaMemoryPtr */       NULL,                   \
-    /* .mediaMemorySizeByte */  0,                      \
-    /* .diskTotalSectors */     0,                      \
-    /* .diskBytesPerSector */   0,                      \
+    /* .diskRawSizeByte */      0,                      \
 }
 
 
@@ -361,6 +350,8 @@ typedef struct {
  * Init (mount) a fileX file system.
  *
  * param[in]        fileXInitType           file system init type.
+ * param[in]        fileXFaultTolerant      fileX fault tolerant enable status.
+ *                                          NOTE: this config will be used for all following format operations.
  * param[in]        fileXConfigPtr          file system configuration pointer.
  * param[in]        guardPtr                file system guard pointer (set to NULL to disable).
  * param[out]       fileXHandlePtr          file system handle pointer.
@@ -369,6 +360,7 @@ typedef struct {
  */
 tommRoC_err_enum_t tommRoCFileXInit(
         const   tommRoC_file_x_init_type_enum_t                 fileXInitType,
+        const   tommRoC_util_enabled_status_enum_t              fileXFaultTolerant,
         const   tommRoC_file_x_file_system_config_t*    const   fileXConfigPtr,
         const   tommRoC_guard_t*                        const   guardPtr,
                 tommRoC_file_x_file_system_t*           const   fileXHandlePtr);
@@ -424,14 +416,16 @@ tommRoC_err_enum_t tommRoCFileXDiskFormat(
  *
  * param[in]        fileXHandlePtr          file system handle pointer.
  * param[out]       totalSizeBytePtr        size of the disk [byte] pointer.
- * param[out]       usedSizeBytePtr         current used size [byte] in the disk.
+ * param[out]       usedSizeBytePtr         current used size [byte] in the disk pointer.
+ * param[out]       availableSizeBytePtr    current available size [byte] in the disk pointer.
  *
  * return tommRoC_err_enum_t
  */
 tommRoC_err_enum_t tommRoCFileXDiskGetSize(
                 tommRoC_file_x_file_system_t*       const   fileXHandlePtr,
                 uint32_t*                           const   totalSizeBytePtr,
-                uint32_t*                           const   usedSizeBytePtr);
+                uint32_t*                           const   usedSizeBytePtr,
+                uint32_t*                           const   availableSizeBytePtr);
 
 
 /******************* File system functions */

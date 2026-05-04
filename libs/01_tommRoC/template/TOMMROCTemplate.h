@@ -39,6 +39,7 @@
 
 #include "tommRoCTemplateCrypto.h"
 #include "tommRoCTemplateDebug.h"
+#include "tommRoCTemplateInRAMFileX.h"
 #include "tommRoCTemplateInRAMFS.h"
 #include "tommRoCTemplateOs.h"
 

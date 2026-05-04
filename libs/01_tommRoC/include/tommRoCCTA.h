@@ -54,7 +54,11 @@
 /**
  * @brief This can be used to create an error message at compile time with the size of a type.
  */
+#if !defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_IAR)
 #define TOMMROC_CTA_ERROR_FOR_PRINT_SIZE_OF(t)              char __kaboom[sizeof(t) + 1] = {[sizeof(t)] = ""}
+#else
+#define TOMMROC_CTA_ERROR_FOR_PRINT_SIZE_OF(t)              char (*__kaboom)[sizeof(t)] = ""
+#endif
 
 /**
  * Basic CTA/SCTA defines.
@@ -77,12 +81,30 @@
 
 #define TOMMROC_CTA_TEST(e1, test, e2)                      TOMMROC_CTA((e1) test (e2))
 
-#define TOMMROC_CTA_EQUALS(e1, e2)                          TOMMROC_CTA_TEST(((long int) (e1)), ==, ((long int) (e2)))
-#define TOMMROC_CTA_NOT_EQUALS(e1, e2)                      TOMMROC_CTA_TEST(((long int) (e1)), !=, ((long int) (e2)))
-#define TOMMROC_CTA_LESS_THAN(e1, e2)                       TOMMROC_CTA_TEST(((long int) (e1)), < , ((long int) (e2)))
-#define TOMMROC_CTA_LESS_OR_EQUALS_THAN(e1, e2)             TOMMROC_CTA_TEST(((long int) (e1)), <=, ((long int) (e2)))
-#define TOMMROC_CTA_MORE_THAN(e1, e2)                       TOMMROC_CTA_TEST(((long int) (e1)), > , ((long int) (e2)))
-#define TOMMROC_CTA_MORE_OR_EQUALS_THAN(e1, e2)             TOMMROC_CTA_TEST(((long int) (e1)), >=, ((long int) (e2)))
+#define TOMMROC_CTA_EQUALS(e1, e2)                          TOMMROC_CTA_TEST(((long long int) (e1)), ==, ((long long int) (e2)))
+#define TOMMROC_CTA_NOT_EQUALS(e1, e2)                      TOMMROC_CTA_TEST(((long long int) (e1)), !=, ((long long int) (e2)))
+#define TOMMROC_CTA_LESS_THAN(e1, e2)                       TOMMROC_CTA_TEST(((long long int) (e1)), < , ((long long int) (e2)))
+#define TOMMROC_CTA_LESS_OR_EQUALS_THAN(e1, e2)             TOMMROC_CTA_TEST(((long long int) (e1)), <=, ((long long int) (e2)))
+#define TOMMROC_CTA_GREATER_THAN(e1, e2)                    TOMMROC_CTA_TEST(((long long int) (e1)), > , ((long long int) (e2)))
+#define TOMMROC_CTA_GREATER_OR_EQUALS_THAN(e1, e2)          TOMMROC_CTA_TEST(((long long int) (e1)), >=, ((long long int) (e2)))
+#define TOMMROC_CTA_MORE_THAN(e1, e2)                       TOMMROC_CTA_GREATER_THAN(e1, e2)            // NOTE: MORE version is deprecated.
+#define TOMMROC_CTA_MORE_OR_EQUALS_THAN(e1, e2)             TOMMROC_CTA_GREATER_OR_EQUALS_THAN(e1, e2)
+
+#if !defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_IAR)
+#define TOMMROC_CTA_PTR_EQUALS(e1, e2)                      TOMMROC_CTA_TEST(((void*) (e2)), ==, ((void*) (e1)))
+#define TOMMROC_CTA_PTR_NOT_EQUALS(e1, e2)                  TOMMROC_CTA_TEST(((void*) (e2)), !=, ((void*) (e1)))
+#define TOMMROC_CTA_PTR_LESS_THAN(e1, e2)                   TOMMROC_CTA_TEST(((void*) (e1)), < , ((void*) (e2)))
+#define TOMMROC_CTA_PTR_LESS_OR_EQUALS_THAN(e1, e2)         TOMMROC_CTA_TEST(((void*) (e1)), <=, ((void*) (e2)))
+#define TOMMROC_CTA_PTR_GREATER_THAN(e1, e2)                TOMMROC_CTA_TEST(((void*) (e1)), > , ((void*) (e2)))
+#define TOMMROC_CTA_PTR_GREATER_OR_EQUALS_THAN(e1, e2)      TOMMROC_CTA_TEST(((void*) (e1)), >=, ((void*) (e2)))
+#else
+#define TOMMROC_CTA_PTR_EQUALS(e1, e2)                      TOMMROC_CTA_TEST(((uint32_t) (e2)), ==, ((uint32_t) (e1)))
+#define TOMMROC_CTA_PTR_NOT_EQUALS(e1, e2)                  TOMMROC_CTA_TEST(((uint32_t) (e2)), !=, ((uint32_t) (e1)))
+#define TOMMROC_CTA_PTR_LESS_THAN(e1, e2)                   TOMMROC_CTA_TEST(((uint32_t) (e1)), < , ((uint32_t) (e2)))
+#define TOMMROC_CTA_PTR_LESS_OR_EQUALS_THAN(e1, e2)         TOMMROC_CTA_TEST(((uint32_t) (e1)), <=, ((uint32_t) (e2)))
+#define TOMMROC_CTA_PTR_GREATER_THAN(e1, e2)                TOMMROC_CTA_TEST(((uint32_t) (e1)), > , ((uint32_t) (e2)))
+#define TOMMROC_CTA_PTR_GREATER_OR_EQUALS_THAN(e1, e2)      TOMMROC_CTA_TEST(((uint32_t) (e1)), >=, ((uint32_t) (e2)))
+#endif
 
 #define TOMMROC_CTA_TRUE(e)                                 TOMMROC_CTA(e)
 #define TOMMROC_CTA_FALSE(e)                                TOMMROC_CTA((!!!(e)))
@@ -99,8 +121,10 @@
 #define TOMMROC_CTA_SIZE_OF_NOT_EQUALS(t1, t2)              TOMMROC_CTA_NOT_EQUALS(sizeof(t1), sizeof(t2))
 #define TOMMROC_CTA_SIZE_OF_LESS_THAN(t1, t2)               TOMMROC_CTA_LESS_THAN(sizeof(t1), sizeof(t2))
 #define TOMMROC_CTA_SIZE_OF_LESS_OR_EQUALS_THAN(t1, t2)     TOMMROC_CTA_LESS_OR_EQUALS_THAN(sizeof(t1), sizeof(t2))
-#define TOMMROC_CTA_SIZE_OF_MORE_THAN(t1, t2)               TOMMROC_CTA_MORE_THAN(sizeof(t1), sizeof(t2))
-#define TOMMROC_CTA_SIZE_OF_MORE_OR_EQUALS_THAN(t1, t2)     TOMMROC_CTA_MORE_OR_EQUALS_THAN(sizeof(t1), sizeof(t2))
+#define TOMMROC_CTA_SIZE_OF_GREATER_THAN(t1, t2)            TOMMROC_CTA_GREATER_THAN(sizeof(t1), sizeof(t2))
+#define TOMMROC_CTA_SIZE_OF_GREATER_OR_EQUALS_THAN(t1, t2)  TOMMROC_CTA_GREATER_OR_EQUALS_THAN(sizeof(t1), sizeof(t2))
+#define TOMMROC_CTA_SIZE_OF_MORE_THAN(t1, t2)               TOMMROC_CTA_SIZE_OF_GREATER_THAN(t1, t2)            // NOTE: MORE version is deprecated.
+#define TOMMROC_CTA_SIZE_OF_MORE_OR_EQUALS_THAN(t1, t2)     TOMMROC_CTA_SIZE_OF_GREATER_OR_EQUALS_THAN(t1, t2)
 
 #define TOMMROC_CTA_SIZE_OF_ZERO(t)                         TOMMROC_CTA_EQUALS(sizeof(t), 0)
 #define TOMMROC_CTA_SIZE_OF_NOT_ZERO(t)                     TOMMROC_CTA_NOT_EQUALS(sizeof(t), 0)
@@ -112,8 +136,10 @@
 #define TOMMROC_CTA_EAMOUNT_NOT_EQUALS(t1, t2)              TOMMROC_CTA_NOT_EQUALS(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
 #define TOMMROC_CTA_EAMOUNT_LESS_THAN(t1, t2)               TOMMROC_CTA_LESS_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
 #define TOMMROC_CTA_EAMOUNT_LESS_OR_EQUALS_THAN(t1, t2)     TOMMROC_CTA_LESS_OR_EQUALS_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
-#define TOMMROC_CTA_EAMOUNT_MORE_THAN(t1, t2)               TOMMROC_CTA_MORE_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
-#define TOMMROC_CTA_EAMOUNT_MORE_OR_EQUALS_THAN(t1, t2)     TOMMROC_CTA_MORE_OR_EQUALS_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
+#define TOMMROC_CTA_EAMOUNT_GREATER_THAN(t1, t2)            TOMMROC_CTA_GREATER_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
+#define TOMMROC_CTA_EAMOUNT_GREATER_OR_EQUALS_THAN(t1, t2)  TOMMROC_CTA_GREATER_OR_EQUALS_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
+#define TOMMROC_CTA_EAMOUNT_MORE_THAN(t1, t2)               TOMMROC_CTA_EAMOUNT_GREATER_THAN(t1, t2)            // NOTE: MORE version is deprecated.
+#define TOMMROC_CTA_EAMOUNT_MORE_OR_EQUALS_THAN(t1, t2)     TOMMROC_CTA_EAMOUNT_GREATER_OR_EQUALS_THAN(t1, t2)
 
 #define TOMMROC_CTA_EAMOUNT_ZERO(t)                         TOMMROC_CTA_EQUALS(TOMMROC_UTIL_ARR_EAMOUNT(t), 0)
 #define TOMMROC_CTA_EAMOUNT_NOT_ZERO(t)                     TOMMROC_CTA_NOT_EQUALS(TOMMROC_UTIL_ARR_EAMOUNT(t), 0)
@@ -124,7 +150,7 @@
 // NOTE: XC8 compiler does not support
 #if !defined (TOMMRO_C_ENV_ENVIRONMENT_IS_XC8)
 #define TOMMROC_CTA_OFFSET_OF_SMEMBER_EQUALS(t1, memberT1, t2, memberT2)    \
-        TOMMROC_CTA_EQUALS(&((t1*)NULL)->memberT1, &((t2*)NULL)->memberT2)
+        TOMMROC_CTA_PTR_EQUALS(&((t1*)NULL)->memberT1, &((t2*)NULL)->memberT2)
 #else
 #define TOMMROC_CTA_OFFSET_OF_SMEMBER_EQUALS(t1, memberT1, t2, memberT2)
 #endif
@@ -149,12 +175,30 @@
 
 #define TOMMROC_SCTA_TEST(e1, test, e2)                     TOMMROC_SCTA((e1) test (e2))
 
-#define TOMMROC_SCTA_EQUALS(e1, e2)                         TOMMROC_SCTA_TEST(((long int) (e1)), ==, ((long int) (e2)))
-#define TOMMROC_SCTA_NOT_EQUALS(e1, e2)                     TOMMROC_SCTA_TEST(((long int) (e1)), !=, ((long int) (e2)))
-#define TOMMROC_SCTA_LESS_THAN(e1, e2)                      TOMMROC_SCTA_TEST(((long int) (e1)), < , ((long int) (e2)))
-#define TOMMROC_SCTA_LESS_OR_EQUALS_THAN(e1, e2)            TOMMROC_SCTA_TEST(((long int) (e1)), <=, ((long int) (e2)))
-#define TOMMROC_SCTA_MORE_THAN(e1, e2)                      TOMMROC_SCTA_TEST(((long int) (e1)), > , ((long int) (e2)))
-#define TOMMROC_SCTA_MORE_OR_EQUALS_THAN(e1, e2)            TOMMROC_SCTA_TEST(((long int) (e1)), >=, ((long int) (e2)))
+#define TOMMROC_SCTA_EQUALS(e1, e2)                         TOMMROC_SCTA_TEST(((long long int) (e1)), ==, ((long long int) (e2)))
+#define TOMMROC_SCTA_NOT_EQUALS(e1, e2)                     TOMMROC_SCTA_TEST(((long long int) (e1)), !=, ((long long int) (e2)))
+#define TOMMROC_SCTA_LESS_THAN(e1, e2)                      TOMMROC_SCTA_TEST(((long long int) (e1)), < , ((long long int) (e2)))
+#define TOMMROC_SCTA_LESS_OR_EQUALS_THAN(e1, e2)            TOMMROC_SCTA_TEST(((long long int) (e1)), <=, ((long long int) (e2)))
+#define TOMMROC_SCTA_GREATER_THAN(e1, e2)                   TOMMROC_SCTA_TEST(((long long int) (e1)), > , ((long long int) (e2)))
+#define TOMMROC_SCTA_GREATER_OR_EQUALS_THAN(e1, e2)         TOMMROC_SCTA_TEST(((long long int) (e1)), >=, ((long long int) (e2)))
+#define TOMMROC_SCTA_MORE_THAN(e1, e2)                      TOMMROC_SCTA_GREATER_THAN(e1, e2)           // NOTE: MORE version is deprecated.
+#define TOMMROC_SCTA_MORE_OR_EQUALS_THAN(e1, e2)            TOMMROC_SCTA_GREATER_OR_EQUALS_THAN(e1, e2)
+
+#if !defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_IAR)
+#define TOMMROC_SCTA_PTR_EQUALS(e1, e2)                     TOMMROC_SCTA_TEST(((void*) (e2)), ==, ((void*) (e1)))
+#define TOMMROC_SCTA_PTR_NOT_EQUALS(e1, e2)                 TOMMROC_SCTA_TEST(((void*) (e2)), !=, ((void*) (e1)))
+#define TOMMROC_SCTA_PTR_LESS_THAN(e1, e2)                  TOMMROC_SCTA_TEST(((void*) (e1)), < , ((void*) (e2)))
+#define TOMMROC_SCTA_PTR_LESS_OR_EQUALS_THAN(e1, e2)        TOMMROC_SCTA_TEST(((void*) (e1)), <=, ((void*) (e2)))
+#define TOMMROC_SCTA_PTR_GREATER_THAN(e1, e2)               TOMMROC_SCTA_TEST(((void*) (e1)), > , ((void*) (e2)))
+#define TOMMROC_SCTA_PTR_GREATER_OR_EQUALS_THAN(e1, e2)     TOMMROC_SCTA_TEST(((void*) (e1)), >=, ((void*) (e2)))
+#else
+#define TOMMROC_SCTA_PTR_EQUALS(e1, e2)                     TOMMROC_SCTA_TEST(((uint32_t) (e2)), ==, ((uint32_t) (e1)))
+#define TOMMROC_SCTA_PTR_NOT_EQUALS(e1, e2)                 TOMMROC_SCTA_TEST(((uint32_t) (e2)), !=, ((uint32_t) (e1)))
+#define TOMMROC_SCTA_PTR_LESS_THAN(e1, e2)                  TOMMROC_SCTA_TEST(((uint32_t) (e1)), < , ((uint32_t) (e2)))
+#define TOMMROC_SCTA_PTR_LESS_OR_EQUALS_THAN(e1, e2)        TOMMROC_SCTA_TEST(((uint32_t) (e1)), <=, ((uint32_t) (e2)))
+#define TOMMROC_SCTA_PTR_GREATER_THAN(e1, e2)               TOMMROC_SCTA_TEST(((uint32_t) (e1)), > , ((uint32_t) (e2)))
+#define TOMMROC_SCTA_PTR_GREATER_OR_EQUALS_THAN(e1, e2)     TOMMROC_SCTA_TEST(((uint32_t) (e1)), >=, ((uint32_t) (e2)))
+#endif
 
 #define TOMMROC_SCTA_TRUE(e)                                TOMMROC_SCTA(e)
 #define TOMMROC_SCTA_FALSE(e)                               TOMMROC_SCTA((!!!(e)))
@@ -171,8 +215,10 @@
 #define TOMMROC_SCTA_SIZE_OF_NOT_EQUALS(t1, t2)             TOMMROC_SCTA_NOT_EQUALS(sizeof(t1), sizeof(t2))
 #define TOMMROC_SCTA_SIZE_OF_LESS_THAN(t1, t2)              TOMMROC_SCTA_LESS_THAN(sizeof(t1), sizeof(t2))
 #define TOMMROC_SCTA_SIZE_OF_LESS_OR_EQUALS_THAN(t1, t2)    TOMMROC_SCTA_LESS_OR_EQUALS_THAN(sizeof(t1), sizeof(t2))
-#define TOMMROC_SCTA_SIZE_OF_MORE_THAN(t1, t2)              TOMMROC_SCTA_MORE_THAN(sizeof(t1), sizeof(t2))
-#define TOMMROC_SCTA_SIZE_OF_MORE_OR_EQUALS_THAN(t1, t2)    TOMMROC_SCTA_MORE_OR_EQUALS_THAN(sizeof(t1), sizeof(t2))
+#define TOMMROC_SCTA_SIZE_OF_GREATER_THAN(t1, t2)           TOMMROC_SCTA_GREATER_THAN(sizeof(t1), sizeof(t2))
+#define TOMMROC_SCTA_SIZE_OF_GREATER_OR_EQUALS_THAN(t1, t2) TOMMROC_SCTA_GREATER_OR_EQUALS_THAN(sizeof(t1), sizeof(t2))
+#define TOMMROC_SCTA_SIZE_OF_MORE_THAN(t1, t2)              TOMMROC_SCTA_SIZE_OF_GREATER_THAN(t1, t2)           // NOTE: MORE version is deprecated.
+#define TOMMROC_SCTA_SIZE_OF_MORE_OR_EQUALS_THAN(t1, t2)    TOMMROC_SCTA_SIZE_OF_GREATER_OR_EQUALS_THAN(t1, t2)
 
 #define TOMMROC_SCTA_SIZE_OF_ZERO(t)                        TOMMROC_SCTA_EQUALS(sizeof(t), 0)
 #define TOMMROC_SCTA_SIZE_OF_NOT_ZERO(t)                    TOMMROC_SCTA_NOT_EQUALS(sizeof(t), 0)
@@ -184,8 +230,10 @@
 #define TOMMROC_SCTA_EAMOUNT_NOT_EQUALS(t1, t2)             TOMMROC_SCTA_NOT_EQUALS(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
 #define TOMMROC_SCTA_EAMOUNT_LESS_THAN(t1, t2)              TOMMROC_SCTA_LESS_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
 #define TOMMROC_SCTA_EAMOUNT_LESS_OR_EQUALS_THAN(t1, t2)    TOMMROC_SCTA_LESS_OR_EQUALS_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
-#define TOMMROC_SCTA_EAMOUNT_MORE_THAN(t1, t2)              TOMMROC_SCTA_MORE_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
-#define TOMMROC_SCTA_EAMOUNT_MORE_OR_EQUALS_THAN(t1, t2)    TOMMROC_SCTA_MORE_OR_EQUALS_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
+#define TOMMROC_SCTA_EAMOUNT_GREATER_THAN(t1, t2)           TOMMROC_SCTA_GREATER_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
+#define TOMMROC_SCTA_EAMOUNT_GREATER_OR_EQUALS_THAN(t1, t2) TOMMROC_SCTA_GREATER_OR_EQUALS_THAN(TOMMROC_UTIL_ARR_EAMOUNT(t1), TOMMROC_UTIL_ARR_EAMOUNT(t2))
+#define TOMMROC_SCTA_EAMOUNT_MORE_THAN(t1, t2)              TOMMROC_SCTA_EAMOUNT_GREATER_THAN(t1, t2)           // NOTE: MORE version is deprecated.
+#define TOMMROC_SCTA_EAMOUNT_MORE_OR_EQUALS_THAN(t1, t2)    TOMMROC_SCTA_EAMOUNT_GREATER_OR_EQUALS_THAN(t1, t2)
 
 #define TOMMROC_SCTA_EAMOUNT_ZERO(t)                        TOMMROC_SCTA_EQUALS(TOMMROC_UTIL_ARR_EAMOUNT(t), 0)
 #define TOMMROC_SCTA_EAMOUNT_NOT_ZERO(t)                    TOMMROC_SCTA_NOT_EQUALS(TOMMROC_UTIL_ARR_EAMOUNT(t), 0)
@@ -196,7 +244,7 @@
 // NOTE: XC8 compiler does not support
 #if !defined (TOMMRO_C_ENV_ENVIRONMENT_IS_XC8)
 #define TOMMROC_SCTA_OFFSET_OF_SMEMBER_EQUALS(t1, memberT1, t2, memberT2)   \
-        TOMMROC_SCTA_EQUALS(&((t1*)NULL)->memberT1, &((t2*)NULL)->memberT2)
+        TOMMROC_SCTA_PTR_EQUALS(&((t1*)NULL)->memberT1, &((t2*)NULL)->memberT2)
 #else
 #define TOMMROC_SCTA_OFFSET_OF_SMEMBER_EQUALS(t1, memberT1, t2, memberT2)
 #endif

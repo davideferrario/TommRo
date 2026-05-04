@@ -33,7 +33,7 @@
  */
 
 /**
- *  - __TOMMROC_USE_IN_RAM_FS_TEMPLATE__                                    in RAM file system
+ *  - __TOMMROC_USE_IN_RAM_FS_TEMPLATE__                                    in RAM littleFS file system
  */
 
 /*******************************************************************************

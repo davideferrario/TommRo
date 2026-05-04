@@ -57,7 +57,8 @@
 /**
  * Compatibility attribute.
  */
-#if defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM)
+#if defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM) && defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_GCC)
+#define TOMMRO_C_UTIL_ASSEMBLER_INSTRUCTION                 __asm__
 #define TOMMRO_C_UTIL_INLINE_FUNCT                          inline
 #define TOMMRO_C_UTIL_STATIC_INLINE_FUNCT                   static inline
 #define TOMMRO_C_UTIL_STATIC_FORCEINLINE_FUNCT              __attribute__((always_inline)) static inline
@@ -99,7 +100,51 @@
 #define TOMMRO_C_UTIL_COMPILE_TIME                          __TIME__        // hh:mm:ss (Ex. 01:02:03)
 #define TOMMRO_C_UTIL_COMPILE_TIMESTAMP                     __TIMESTAMP__   // (Ex. Sun Sep 16 01:03:52 1973)
 
+#elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM) && defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_IAR)
+#define TOMMRO_C_UTIL_ASSEMBLER_INSTRUCTION                 __asm
+#define TOMMRO_C_UTIL_INLINE_FUNCT                          inline
+#define TOMMRO_C_UTIL_STATIC_INLINE_FUNCT                   static inline
+#define TOMMRO_C_UTIL_STATIC_FORCEINLINE_FUNCT              __attribute__((always_inline)) static inline
+#define TOMMRO_C_UTIL_FILE                                  __FILE__
+#define TOMMRO_C_UTIL_FILE_NAME                             __FILE_NAME__
+#define TOMMRO_C_UTIL_LINE                                  __LINE__
+#define TOMMRO_C_UTIL_FUNCT_NAME                            __FUNCTION__
+#define TOMMRO_C_UTIL_PACKED_PRE                            __packed
+#define TOMMRO_C_UTIL_PACKED_POST
+#define TOMMRO_C_UTIL_UNUSED_PRE                            __attribute__((unused))
+#define TOMMRO_C_UTIL_UNUSED_POST
+#define TOMMRO_C_UTIL_USED_PRE                              __attribute__((used))
+#define TOMMRO_C_UTIL_USED_POST
+#define TOMMRO_C_UTIL_WEAK_PRE                              __attribute__((weak))
+#define TOMMRO_C_UTIL_WEAK_POST
+#define TOMMRO_C_UTIL_SECTION_PRE(name)
+#define TOMMRO_C_UTIL_SECTION_POST(name)
+#define TOMMRO_C_UTIL_ALIGN_PRE(N)
+#define TOMMRO_C_UTIL_ALIGN_POST(N)
+#define TOMMRO_C_UTIL_NORETURN_FUNCTION_PRE
+#define TOMMRO_C_UTIL_NORETURN_FUNCTION_POST
+#define TOMMRO_C_UTIL_NO_INIT_VAR_PRE(var)
+#define TOMMRO_C_UTIL_NO_INIT_VAR_POST(var)
+#define TOMMRO_C_UTIL_OPTIMIZATION_NONE_PRE                 _Pragma("optimize=none")
+#define TOMMRO_C_UTIL_OPTIMIZATION_NONE_POST
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_PRE             _Pragma("optimize=low")
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_POST
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_MORE_PRE        _Pragma("optimize=medium")
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_MORE_POST
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_MOST_PRE        _Pragma("optimize=high, balanced")
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_MOST_POST
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_SIZE_PRE        _Pragma("optimize=size")
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_SIZE_POST
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_FAST_PRE        _Pragma("optimize=speed")
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_FAST_POST
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_FOR_DEBUG_PRE   _Pragma("optimize=none")
+#define TOMMRO_C_UTIL_OPTIMIZATION_OPTIMIZE_FOR_DEBUG_POST
+#define TOMMRO_C_UTIL_COMPILE_DATE                          __DATE__        // Mmm dd yyyy (Jul 27 2012)
+#define TOMMRO_C_UTIL_COMPILE_TIME                          __TIME__        // hh:mm:ss (Ex. 01:02:03)
+#define TOMMRO_C_UTIL_COMPILE_TIMESTAMP                     __TIMESTAMP__   // (Ex. Sun Sep 16 01:03:52 1973)
+
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ESP32)
+#define TOMMRO_C_UTIL_ASSEMBLER_INSTRUCTION                 __asm__
 #define TOMMRO_C_UTIL_INLINE_FUNCT                          inline
 #define TOMMRO_C_UTIL_STATIC_INLINE_FUNCT                   static inline
 #define TOMMRO_C_UTIL_STATIC_FORCEINLINE_FUNCT              __attribute__((always_inline)) static inline
@@ -154,6 +199,7 @@
 #define TOMMRO_C_UTIL_COMPILE_TIMESTAMP                     __TIMESTAMP__   // (Ex. Sun Sep 16 01:03:52 1973)
 
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARMLINUX)
+#define TOMMRO_C_UTIL_ASSEMBLER_INSTRUCTION                 __asm__
 #define TOMMRO_C_UTIL_INLINE_FUNCT                          inline
 #define TOMMRO_C_UTIL_STATIC_INLINE_FUNCT                   static inline
 #define TOMMRO_C_UTIL_STATIC_FORCEINLINE_FUNCT              __attribute__((always_inline)) static inline
@@ -196,6 +242,7 @@
 #define TOMMRO_C_UTIL_COMPILE_TIMESTAMP                     __TIMESTAMP__   // (Ex. Sun Sep 16 01:03:52 1973)
 
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_LINUX)
+#define TOMMRO_C_UTIL_ASSEMBLER_INSTRUCTION                 __asm__
 #define TOMMRO_C_UTIL_INLINE_FUNCT                          inline
 #define TOMMRO_C_UTIL_STATIC_INLINE_FUNCT                   static inline
 #define TOMMRO_C_UTIL_STATIC_FORCEINLINE_FUNCT              __attribute__((always_inline)) static inline
@@ -230,6 +277,7 @@
 #define TOMMRO_C_UTIL_COMPILE_TIMESTAMP                     __TIMESTAMP__   // (Ex. Sun Sep 16 01:03:52 1973)
 
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_WIN)
+#define TOMMRO_C_UTIL_ASSEMBLER_INSTRUCTION                 __Asm
 #define TOMMRO_C_UTIL_INLINE_FUNCT                          inline
 #define TOMMRO_C_UTIL_STATIC_INLINE_FUNCT                   static inline
 #define TOMMRO_C_UTIL_STATIC_FORCEINLINE_FUNCT              TOMMRO_C_UTIL_STATIC_INLINE_FUNCT
@@ -272,6 +320,7 @@
 #define TOMMRO_C_UTIL_COMPILE_TIMESTAMP                     __TIMESTAMP__   // (Ex. Sun Sep 16 01:03:52 1973)
 
 #elif defined (TOMMRO_C_ENV_ENVIRONMENT_IS_XC8) || defined (TOMMRO_C_ENV_ENVIRONMENT_IS_XC16) || defined (TOMMRO_C_ENV_ENVIRONMENT_IS_XC32)
+#define TOMMRO_C_UTIL_ASSEMBLER_INSTRUCTION                 __asm__
 #define TOMMRO_C_UTIL_INLINE_FUNCT                          inline
 #define TOMMRO_C_UTIL_STATIC_INLINE_FUNCT                   static inline
 #define TOMMRO_C_UTIL_STATIC_FORCEINLINE_FUNCT              TOMMRO_C_UTIL_STATIC_INLINE_FUNCT

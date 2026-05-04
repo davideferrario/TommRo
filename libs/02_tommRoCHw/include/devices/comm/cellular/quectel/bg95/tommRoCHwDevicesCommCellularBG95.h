@@ -393,6 +393,7 @@ tommRoC_hw_err_enum_t tommRoCHwDevicesCommCellularBG95NetSocketClose(
  * param[in]        authType                PPP authentication type.
  * param[in]        authUserStrPtr          PPP authentication user string pointer (NULL if none).
  * param[in]        authPasswdStrPtr        PPP authentication password string pointer (NULL if none).
+ * param[in]        linkStatusNotifyCb      PPP link status notify callback function (NULL if none).
  * param[in]        notifyPhaseCb           PPP notify phase callback function (NULL if none).
  *
  * return tommRoC_hw_err_enum_t
@@ -402,6 +403,7 @@ tommRoC_hw_err_enum_t tommRoCHwDevicesCommCellularBG95LwIPOnlyClient(
         const   tommRoC_hw_net_lwip_ppp_def_auth_type_enum_t                            authType,
         const   char*                                                           const   authUserStrPtr,
         const   char*                                                           const   authPasswdStrPtr,
+        const   tommRoC_hw_net_lwip_ppp_def_link_status_notify_cb_funct_t               linkStatusNotifyCb,
         const   tommRoC_hw_net_lwip_ppp_def_notify_phase_funct_t                        notifyPhaseCb);
 
 /**

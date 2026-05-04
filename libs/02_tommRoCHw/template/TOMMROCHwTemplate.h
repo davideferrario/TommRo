@@ -41,8 +41,6 @@
 #include "tommRoCHwTemplateBusSpecific.h"
 #include "tommRoCHwTemplateFATFS.h"
 #include "tommRoCHwTemplateFATFSSQL.h"
-#include "tommRoCHwTemplateFileXFS.h"
-#include "tommRoCHwTemplateFileXFSSQL.h"
 #include "tommRoCHwTemplateLWEsp.h"
 #include "tommRoCHwTemplateLwIP.h"
 #include "tommRoCHwTemplateMCUFlash.h"

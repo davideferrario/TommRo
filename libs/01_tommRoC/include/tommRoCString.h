@@ -698,6 +698,26 @@ tommRoC_err_enum_t tommRoCStringContains(
         const   char*       const   toFindPtr);
 
 /**
+ * Check if source string contains another string - string length version.
+ *
+ * param[in]        sourceStrPtr            source string pointer.
+ * param[in]        sourceStrLen            source string length.
+ * param[in]        toFindStrPtr            to find string pointer.
+ * param[in]        toFindStrLen            to find string length.
+ *
+ * return tommRoC_err_enum_t
+ *          TOMMRO_C_ERR_SUCCESS                                    -> source string contains toFind string.
+ *          TOMMRO_C_NOT_FOUND_ERR                                  -> source string doesn't contains toFind string.
+ *          TOMMRO_C_NULL_PARAM_ERR                                 -> NULL param error.
+ *          TOMMRO_C_PARAM_ERR                                      -> param error.
+ */
+tommRoC_err_enum_t tommRoCStringContainsLen(
+        const   char*       const   sourceStrPtr,
+        const   uint16_t            sourceStrLen,
+        const   char*       const   toFindStrPtr,
+        const   uint16_t            toFindStrLen);
+
+/**
  * Get index of first occurrence of a string inside another string.
  *
  * param[in]        sourcePtr               source string pointer [NOTE: string have to be terminated with '\0'].

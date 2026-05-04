@@ -91,12 +91,30 @@
 
 #define TOMMROC_ASSERT_TEST(e1, test, e2)                   TOMMROC_ASSERT((e1) test (e2))
 
-#define TOMMROC_ASSERT_EQUALS(e1, e2)                       TOMMROC_ASSERT_TEST(((long int) (e2)), ==, ((long int) (e1)))
-#define TOMMROC_ASSERT_NOT_EQUALS(e1, e2)                   TOMMROC_ASSERT_TEST(((long int) (e2)), !=, ((long int) (e1)))
-#define TOMMROC_ASSERT_LESS_THAN(e1, e2)                    TOMMROC_ASSERT_TEST(((long int) (e1)), <,  ((long int) (e2)))
-#define TOMMROC_ASSERT_LESS_OR_EQUALS_THAN(e1, e2)          TOMMROC_ASSERT_TEST(((long int) (e1)), <=, ((long int) (e2)))
-#define TOMMROC_ASSERT_MORE_THAN(e1, e2)                    TOMMROC_ASSERT_TEST(((long int) (e1)), >,  ((long int) (e2)))
-#define TOMMROC_ASSERT_MORE_OR_EQUALS_THAN(e1, e2)          TOMMROC_ASSERT_TEST(((long int) (e1)), >=, ((long int) (e2)))
+#define TOMMROC_ASSERT_EQUALS(e1, e2)                       TOMMROC_ASSERT_TEST(((long long int) (e2)), ==, ((long long int) (e1)))
+#define TOMMROC_ASSERT_NOT_EQUALS(e1, e2)                   TOMMROC_ASSERT_TEST(((long long int) (e2)), !=, ((long long int) (e1)))
+#define TOMMROC_ASSERT_LESS_THAN(e1, e2)                    TOMMROC_ASSERT_TEST(((long long int) (e1)), <,  ((long long int) (e2)))
+#define TOMMROC_ASSERT_LESS_OR_EQUALS_THAN(e1, e2)          TOMMROC_ASSERT_TEST(((long long int) (e1)), <=, ((long long int) (e2)))
+#define TOMMROC_ASSERT_GREATER_THAN(e1, e2)                 TOMMROC_ASSERT_TEST(((long long int) (e1)), >,  ((long long int) (e2)))
+#define TOMMROC_ASSERT_GREATER_OR_EQUALS_THAN(e1, e2)       TOMMROC_ASSERT_TEST(((long long int) (e1)), >=, ((long long int) (e2)))
+#define TOMMROC_ASSERT_MORE_THAN(e1, e2)                    TOMMROC_ASSERT_GREATER_THAN(e1, e2)             // NOTE: MORE version is deprecated.
+#define TOMMROC_ASSERT_MORE_OR_EQUALS_THAN(e1, e2)          TOMMROC_ASSERT_GREATER_OR_EQUALS_THAN(e1, e2)
+
+#if !defined (TOMMRO_C_ENV_ENVIRONMENT_IS_ARM_IAR)
+#define TOMMROC_ASSERT_PTR_EQUALS(e1, e2)                   TOMMROC_ASSERT_TEST(((void*) (e2)), ==, ((void*) (e1)))
+#define TOMMROC_ASSERT_PTR_NOT_EQUALS(e1, e2)               TOMMROC_ASSERT_TEST(((void*) (e2)), !=, ((void*) (e1)))
+#define TOMMROC_ASSERT_PTR_LESS_THAN(e1, e2)                TOMMROC_ASSERT_TEST(((void*) (e1)), <,  ((void*) (e2)))
+#define TOMMROC_ASSERT_PTR_LESS_OR_EQUALS_THAN(e1, e2)      TOMMROC_ASSERT_TEST(((void*) (e1)), <=, ((void*) (e2)))
+#define TOMMROC_ASSERT_PTR_GREATER_THAN(e1, e2)             TOMMROC_ASSERT_TEST(((void*) (e1)), >,  ((void*) (e2)))
+#define TOMMROC_ASSERT_PTR_GREATER_OR_EQUALS_THAN(e1, e2)   TOMMROC_ASSERT_TEST(((void*) (e1)), >=, ((void*) (e2)))
+#else
+#define TOMMROC_ASSERT_PTR_EQUALS(e1, e2)                   TOMMROC_ASSERT_TEST(((uint32_t) (e2)), ==, ((uint32_t) (e1)))
+#define TOMMROC_ASSERT_PTR_NOT_EQUALS(e1, e2)               TOMMROC_ASSERT_TEST(((uint32_t) (e2)), !=, ((uint32_t) (e1)))
+#define TOMMROC_ASSERT_PTR_LESS_THAN(e1, e2)                TOMMROC_ASSERT_TEST(((uint32_t) (e1)), <,  ((uint32_t) (e2)))
+#define TOMMROC_ASSERT_PTR_LESS_OR_EQUALS_THAN(e1, e2)      TOMMROC_ASSERT_TEST(((uint32_t) (e1)), <=, ((uint32_t) (e2)))
+#define TOMMROC_ASSERT_PTR_GREATER_THAN(e1, e2)             TOMMROC_ASSERT_TEST(((uint32_t) (e1)), >,  ((uint32_t) (e2)))
+#define TOMMROC_ASSERT_PTR_GREATER_OR_EQUALS_THAN(e1, e2)   TOMMROC_ASSERT_TEST(((uint32_t) (e1)), >=, ((uint32_t) (e2)))
+#endif
 
 #define TOMMROC_ASSERT_TRUE(e)                              TOMMROC_ASSERT(e)
 #define TOMMROC_ASSERT_FALSE(e)                             TOMMROC_ASSERT((!!!(e)))

@@ -126,8 +126,6 @@ tommRoC_hw_err_enum_t tommRoCHwTemplateNetDNSStart(void) {
             /* .getHostByNameFunct */   _get_host_by_name,
     };
 
-    dns_init();
-
     return tommRoCHwNetDNSInitEnv(&init);
 }
 

@@ -371,7 +371,7 @@ tommRoC_hw_err_enum_t tommRoCHwTemplateWiFiInit(
 tommRoC_hw_err_enum_t tommRoCHwTemplateWiFiStop(void) {
 
     if (!_is_init) {
-        return TOMMRO_C_HW_LOW_LEVEL_ERR;
+        return TOMMRO_C_HW_ENVIRONMENT_NOT_INIT_ERR;
     }
 
     TOMMROC_HW_ERR_IF_TOMMROC_HW_LIB_FUNCT_NOT_SUCCESS_RETURN_RESULT(
@@ -387,6 +387,10 @@ tommRoC_hw_err_enum_t tommRoCHwTemplateWiFiStop(void) {
 
 bool tommRoCHwTemplateWiFiIsConnected(void) {
 
+    if (!_is_init) {
+        return false;
+    }
+    
     if (NULL == _wifi_event_group) {
         return false;
     }
@@ -397,6 +401,10 @@ bool tommRoCHwTemplateWiFiIsConnected(void) {
 tommRoC_hw_err_enum_t tommRoCHwTemplateWiFiDisconnect(void) {
 
     esp_err_t err;
+
+    if (!_is_init) {
+        return TOMMRO_C_HW_ENVIRONMENT_NOT_INIT_ERR;
+    }
 
     if (!tommRoCHwTemplateWiFiIsConnected()) {
         return TOMMRO_C_HW_LOW_LEVEL_ERR;
@@ -439,6 +447,10 @@ tommRoC_hw_err_enum_t tommRoCHwTemplateWiFiConnect(
 
     TOMMROC_HW_PARAM_CHECK_ON_ZERO_RETURN_ERR(wiFiSSIDStrLen);
     TOMMROC_HW_PARAM_CHECK_ON_ZERO_RETURN_ERR(wiFiPASSStrLen);
+    
+    if (!_is_init) {
+        return TOMMRO_C_HW_ENVIRONMENT_NOT_INIT_ERR;
+    }
 
     if (tommRoCHwTemplateWiFiIsConnected()) {
         return TOMMRO_C_HW_LOW_LEVEL_ERR;

@@ -41,6 +41,7 @@ TOMMROC_SCTA_LESS_OR_EQUALS_THAN(sizeof(tommRoC_mw_template_thread_t),      TOMM
 /*******************************************************************************
  * local functions
  ******************************************************************************/
+#if defined (__TOMMROC_MW_SEMAPHORE_COUNTING_SEMAPHORES_TEMPLATE_IS_USED__)
 static tommRoC_hw_err_enum_t _lwip_config(void) {
 
     tommRoC_hw_net_lwip_config_t config = TOMMROC_UTIL_EMPTY_VARIABLE(tommRoC_hw_net_lwip_config_t);
@@ -75,6 +76,7 @@ static tommRoC_hw_err_enum_t _lwip_config(void) {
 
     return TOMMRO_C_HW_ERR_SUCCESS;
 }
+#endif
 
 /*******************************************************************************
  * functions

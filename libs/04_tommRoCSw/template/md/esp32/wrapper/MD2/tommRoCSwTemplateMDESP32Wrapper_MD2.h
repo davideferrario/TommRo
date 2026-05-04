@@ -42,7 +42,7 @@
 
 #include "TOMMROCSw.h"
 
-#if (MBEDTLS_VERSION_MAJOR == 2)
+#if (MBEDTLS_VERSION_MAJOR >= 2)
 #include "mbedtls/md2.h"
 #endif
 
@@ -58,7 +58,7 @@
  * functions
  ******************************************************************************/
 
-#if (MBEDTLS_VERSION_MAJOR == 2)
+#if (MBEDTLS_VERSION_MAJOR >= 2)
 tommRoC_sw_err_enum_t tommRoCSwTemplateMDESP32Wrapper_MD2_Init(mbedtls_md2_context* const mdCtxPtr);
 tommRoC_sw_err_enum_t tommRoCSwTemplateMDESP32Wrapper_MD2_Close(void);
 

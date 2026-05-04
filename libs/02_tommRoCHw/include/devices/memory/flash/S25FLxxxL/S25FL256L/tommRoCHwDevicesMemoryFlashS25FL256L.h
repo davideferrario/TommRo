@@ -205,6 +205,7 @@ tommRoC_hw_err_enum_t tommRoCHwDevicesMemoryFlashS25FL256LStartAsFS(
  * param[in]        memoryForFileXSize      size of memory reserved for file system fileX [byte].
  * param[in]        fileXGuardPtr           file system fileX guard (NULL if none).
  * param[in]        fileXInitType           file system fileX init type.
+ * param[in]        fileXFaultTolerant      fileX fault tolerant enable status.
  * param[in/out]    busDevicePtr            bus device pointer.
  * param[out]       fileXHandlerPtr         file system fileX handler pointer.
  *
@@ -214,6 +215,7 @@ tommRoC_hw_err_enum_t tommRoCHwDevicesMemoryFlashS25FL256LStartAsFileX(
         const   uint32_t                                memoryForFileXSize,
         const   tommRoC_guard_t*                const   fileXGuardPtr,
         const   tommRoC_file_x_init_type_enum_t         fileXInitType,
+        const   tommRoC_util_enabled_status_enum_t      fileXFaultTolerant,
                 tommRoC_hw_bus_device_t*        const   busDevicePtr,
                 tommRoC_file_x_file_system_t*   const   fileXHandlerPtr);
 

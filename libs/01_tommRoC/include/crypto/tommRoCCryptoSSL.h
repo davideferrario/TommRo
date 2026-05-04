@@ -171,7 +171,7 @@ tommRoC_err_enum_t tommRoCCryptoSSLCloseEnv(void);
  *
  * param[in]        isInitPtr               Is init boolean status.
  *
- * return tommRoC_hw_err_enum_t
+ * return tommRoC_err_enum_t
  */
 tommRoC_err_enum_t tommRoCCryptoSSLIsInitEnv(bool* const isInitPtr);
 
